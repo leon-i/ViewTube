@@ -6,6 +6,7 @@ const App = () => (
     <div>
         <h1>ViewTube</h1>
         <Route path='/login' component={LoginFormContainer} />
+        <Link to='/login'>Log In</Link>
     </div>
 );
 

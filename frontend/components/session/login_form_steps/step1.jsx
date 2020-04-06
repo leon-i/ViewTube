@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const Step1 = props => (
+const Step1 = ({ email, handleChange, nextStep }) => (
     <>
         <header>
             <h2>Logo</h2>
@@ -9,12 +9,11 @@ const Step1 = props => (
             <h3>to continue to ViewTube</h3>
         </header>
         <input type="text" placeholder="Email"
-            value={this.state.email}
-            onChange={this.handleChange('email')} />
-        <p>Forgot email?</p>
+            value={email}
+            onChange={handleChange('email')} />
         <section className="form-bottom">
             <Link to='/users/signup'>Create Account</Link>
-            <button>Next</button>
+            <button onClick={nextStep}>Next</button>
         </section>
     </>
 );

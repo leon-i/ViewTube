@@ -50,7 +50,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
-  gem 'jquery-rails'
+  gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+  gem 'rails-ujs', '~> 0.1.0'
 end
 
 group :test do

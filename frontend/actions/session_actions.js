@@ -4,6 +4,7 @@ export const RECEIVE_USER = 'RECEIVE_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 
 const receiveCurrentUser = user => ({
     type: RECEIVE_USER,
@@ -17,6 +18,10 @@ const logoutCurrentUser = () => ({
 const receiveSessionErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
     errors
+});
+
+export const clearSessionErrors = () => ({
+    type: CLEAR_SESSION_ERRORS
 });
 
 export const login = currentUser => dispatch =>

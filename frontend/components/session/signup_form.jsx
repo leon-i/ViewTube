@@ -23,10 +23,12 @@ class SignupForm extends React.Component {
     }
 
     organizeErrors(errors) {
+        debugger
         const errorObj = {};
         errors.forEach(error => {
             const firstWord = error.split(' ')[0];
-            errorObj[firstWord] = error;
+            if (!errorObj[firstWord]) errorObj[firstWord] = firstWord === 'Email' 
+                && error[6] === 'P' ? error.slice(6) : error;
         });
 
         return errorObj;
@@ -34,7 +36,7 @@ class SignupForm extends React.Component {
 
     render() {
         const { email, username, first_name, last_name, password } = this.state;
-        const { errors } = this.props;
+        const { errors, clearSessionErrors } = this.props;
         const organizedErrors = errors.length ? this.organizeErrors(errors) : [];
 
         return (
@@ -58,7 +60,7 @@ class SignupForm extends React.Component {
                         errors={organizedErrors} />
 
                     <section className="form-bottom flex">
-                        <Link to='/login'>Sign in instead</Link>
+                        <Link to='/login' onClick={clearSessionErrors}>Sign in instead</Link>
                         <button onClick={this.handleSubmit}>Sign up</button>
                     </section>
                 </section>

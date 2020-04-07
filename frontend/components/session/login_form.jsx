@@ -19,15 +19,17 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
-        this.props.login(this.state);
+        this.props.login(this.state).then(() => {
+            this.props.history.push('/');
+        });
         // this.setState({
         //     email: '',
         //     password: '',
         //     step: 1,
         //     loginError: ''
         // });
+        // this.props.history.push('/');
     }
 
     prevStep() {
@@ -35,8 +37,14 @@ class LoginForm extends React.Component {
     }
 
     nextStep() {
-        this.state.email === '' ? this.setState({ loginError: ['Enter an email']}) : 
-        this.setState({ step: this.state.step += 1, loginError: '' });
+        const { email, step } = this.state;
+        if (email === '') {
+            this.setState({ loginError: ['Enter an email'] });
+        } else if (email.indexOf('@') === -1) {
+            this.setState({ loginError: ['Please enter a valid email'] });
+        } else {
+            this.setState({ step: step + 1, loginError: '' });
+        }
     }
 
     render() {
@@ -55,8 +63,8 @@ class LoginForm extends React.Component {
                 errors = {this.props.errors} />);
 
         return (
-            <div className='login-form'>
-                <section className='form-content'>
+            <div className='session-form'>
+                <section className='form-content login'>
                     { currentStep }
                 </section>
             </div>

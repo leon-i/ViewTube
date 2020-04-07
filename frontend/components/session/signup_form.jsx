@@ -1,4 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import SignupNames from './signup_form_inputs/signup_names';
+import SignupCredentials from './signup_form_inputs/signup_credentials';
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -17,18 +22,22 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.signup(this.state);
-        // this.setState({
-        //     email: '',
-        //     password: '',
-        //     step: 1,
-        //     loginError: ''
-        // });
-        this.props.history.push('/');
+    }
+
+    organizeErrors(errors) {
+        const errorObj = {};
+        errors.forEach(error => {
+            const firstWord = error.split(' ')[0];
+            errorObj[firstWord] = error;
+        });
+
+        return errorObj;
     }
 
     render() {
         const { email, username, first_name, last_name, password } = this.state;
-        const errorBar = this.props.errors.length ? 'form-error' : '';
+        const { errors } = this.props;
+        const organizedErrors = errors.length ? this.organizeErrors(errors) : [];
 
         return (
             <div className='session-form'>
@@ -39,26 +48,19 @@ class SignupForm extends React.Component {
                         <h3>to continue to ViewTube</h3>
                     </header>
 
-                    <section className="name-inputs flex">
-                        <input className={errorBar} type="text" placeholder="First name"
-                            value={first_name}
-                            onChange={this.handleChange('first_name')} />
-                        <input className={errorBar} type="text" placeholder="Last name"
-                            value={last_name}
-                            onChange={this.handleChange('last_name')} />
-                    </section>
+                    <SignupNames firstName={first_name}
+                        lastName={last_name}
+                        handleChange={this.handleChange}
+                        errors={organizedErrors} />
 
-                    <input className={errorBar} type="text" placeholder="Your email address"
-                        value={email}
-                        onChange={this.handleChange('email')} />
-                    <input className={errorBar} type="text" placeholder="Your desired username"
-                        value={username}
-                        onChange={this.handleChange('username')} />
-                    <input className={errorBar} type="password" placeholder="Password"
-                        value={password}
-                        onChange={this.handleChange('password')} />
+                    <SignupCredentials email={email}
+                        username={username}
+                        password={password}
+                        handleChange={this.handleChange}
+                        errors={organizedErrors} />
 
                     <section className="form-bottom flex">
+                        <Link to='/login'>Sign in instead</Link>
                         <button onClick={this.handleSubmit}>Sign Up</button>
                     </section>
                 </section>

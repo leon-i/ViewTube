@@ -188,14 +188,12 @@
     flex-direction: row;
     justify-content: flex-start;
     color: #d93025;
-    // margin-top: 4px;
     margin: 4px 0px 10px 0px;
     font-size: 12px;
 }
 
 .signup-no-errors {
     opacity: 0;
-    // margin-top: 4px;
     margin: 4px 0px 10px 0px;
     font-size: 12px;
 }
@@ -206,4 +204,10 @@
 
 .errors svg {
     margin: 3px 8px 0px 2px;
+}
+
+.logo {
+    width: 90px;
+    height: 25px;
+    margin: 0 auto;
 }

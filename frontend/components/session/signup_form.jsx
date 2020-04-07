@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import SignupNames from './signup_form_inputs/signup_names';
 import SignupCredentials from './signup_form_inputs/signup_credentials';
 
@@ -43,7 +41,7 @@ class SignupForm extends React.Component {
             <div className='session-form'>
                 <section className='form-content signup'>
                     <header>
-                        <h2>Logo</h2>
+                        <img src={window.logo} className='logo' alt='Viewtube' />
                         <h2>Create your ViewTube Account</h2>
                         <h3>to continue to ViewTube</h3>
                     </header>
@@ -61,7 +59,7 @@ class SignupForm extends React.Component {
 
                     <section className="form-bottom flex">
                         <Link to='/login'>Sign in instead</Link>
-                        <button onClick={this.handleSubmit}>Sign Up</button>
+                        <button onClick={this.handleSubmit}>Sign up</button>
                     </section>
                 </section>
             </div>

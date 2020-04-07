@@ -9,7 +9,7 @@ const Step1 = ({ email, handleChange, nextStep, loginError }) => {
     return (
         <>
             <header>
-                <h2>Logo</h2>
+                <img src={window.logo} className='logo' alt='Viewtube'/>
                 <h2>Sign In</h2>
                 <h3>to continue to ViewTube</h3>
             </header>

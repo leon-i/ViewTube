@@ -9,7 +9,7 @@ const Step2 = ({ email, password, handleChange, handleSubmit, prevStep, errors }
     return (
         <>
             <header>
-                <h2>Logo</h2>
+                <img src={window.logo} className='logo' alt='Viewtube' />
                 <h2>Welcome</h2>
                 <div className="email-container flex" onClick={prevStep}>
                     <FontAwesomeIcon icon={faUserCircle} />

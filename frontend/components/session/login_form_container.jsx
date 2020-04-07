@@ -7,13 +7,14 @@ const mapStateToProps = state => ({
     user: {
         email: '',
         password: '',
-        step: 1
+        step: 1,
+        loginError: ''
     },
-    errors: state.errors.session,
+    errors: state.errors.login,
 });
 
 const mapDispatchToProps = dispatch => ({
-    processForm: user => dispatch(login(user))
+    login: user => dispatch(login(user))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm));

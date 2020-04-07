@@ -7,7 +7,7 @@ class LoginForm extends React.Component {
         super(props);
         this.state = this.props.user;
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.prevStep = this.prevStep.bind(this);
         this.nextStep = this.nextStep.bind(this);
     }
@@ -19,13 +19,15 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(e) {
+        debugger
         e.preventDefault();
         this.props.login(this.state);
-        this.setState({
-            email: '',
-            password: '',
-            step: 1
-        });
+        // this.setState({
+        //     email: '',
+        //     password: '',
+        //     step: 1,
+        //     loginError: ''
+        // });
     }
 
     prevStep() {
@@ -33,19 +35,24 @@ class LoginForm extends React.Component {
     }
 
     nextStep() {
-        this.setState({ step: this.state.step += 1 });
+        this.state.email === '' ? this.setState({ loginError: ['Enter an email']}) : 
+        this.setState({ step: this.state.step += 1, loginError: '' });
     }
 
     render() {
-        const currentStep = this.state.step === 1 ? 
-            (<Step1 email={this.state.email} 
+        const { step, email, password, loginError } = this.state;
+
+        const currentStep = step === 1 ? 
+            (<Step1 email={email} 
                 handleChange={this.handleChange} 
-                nextStep={this.nextStep} />) : 
-            (<Step2 email={this.state.email} 
-                password={this.state.password} 
+                nextStep={this.nextStep}
+                loginError={loginError} />) : 
+            (<Step2 email={email} 
+                password={password} 
                 handleChange={this.handleChange} 
                 handleSubmit={this.handleSubmit} 
-                prevStep={this.prevStep} />);
+                prevStep={this.prevStep} 
+                errors = {this.props.errors} />);
 
         return (
             <div className='login-form'>

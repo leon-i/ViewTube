@@ -1,3 +1,92 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.login-form {
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+    display: block;
+    flex-shrink: 0;
+    margin: 0 auto;
+    min-height: 0;
+    transition: .2s;
+    width: 450px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.form-content {
+    height: auto;
+    min-height: 500px;
+    overflow-y: auto;
+    transition: .2s;
+    padding: 48px 40px 36px;
+    flex-grow: 1;
+    overflow: hidden;
+    box-sizing: inherit;
+}
+
+.form-content h2 {
+    color: #202124;
+    padding-bottom: 0;
+    padding-top: 16px;
+    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.form-content h3 {
+    color: #202124;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: .1px;
+    line-height: 1.5;
+    padding-bottom: 0;
+    padding-top: 8px;
+}
+
+.form-content input {
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+    margin: 1px 1px 0 1px;
+    padding: 13px 15px;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    background: #fff;
+    color: black;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.form-content button {
+    border: none;
+    background: #1a73e8;
+    color: #fff;
+    margin: 8px 16px;
+    padding: 8px 0px;
+    min-width: 88px;
+    max-width: 300px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+    white-space: normal;
+    border-radius: 4px;
+    text-transform: none;
+    font-size: inherit;
+}
+
+.form-content button:hover {
+    background: #4285f4;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 
+        0 3px 1px -2px rgba(0,0,0,0.12), 
+        0 1px 5px 0 rgba(0,0,0,0.2);
+}

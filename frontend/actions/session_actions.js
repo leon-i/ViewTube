@@ -3,7 +3,8 @@ import * as SessionAPIUtil from '../util/session_api_util';
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 
 const receiveCurrentUser = user => ({
     type: RECEIVE_USER,
@@ -14,16 +15,23 @@ const logoutCurrentUser = () => ({
     type: LOGOUT_USER
 });
 
-export const receiveErrors = errors => ({
-    type: RECEIVE_ERRORS,
+const receiveSessionErrors = errors => ({
+    type: RECEIVE_SESSION_ERRORS,
     errors
 });
 
+export const clearSessionErrors = () => ({
+    type: CLEAR_SESSION_ERRORS
+});
+
 export const login = currentUser => dispatch =>
-    SessionAPIUtil.login(currentUser).then(user => dispatch(receiveCurrentUser(user)));
+    SessionAPIUtil.login(currentUser).then(user => dispatch(receiveCurrentUser(user)),
+    errors => dispatch(receiveSessionErrors(errors.responseJSON)));
 
 export const signup = newUser => dispatch =>
-    SessionAPIUtil.signup(newUser).then(user => dispatch(receiveCurrentUser(user)));
+    SessionAPIUtil.signup(newUser).then(user => dispatch(receiveCurrentUser(user)),
+    errors => dispatch(receiveSessionErrors(errors.responseJSON)));
 
 export const logout = () => dispatch =>
-    SessionAPIUtil.logout().then(() => dispatch(logoutCurrentUser()));
+    SessionAPIUtil.logout().then(() => dispatch(logoutCurrentUser()),
+    errors => dispatch(receiveSessionErrors(errors.responseJSON)));

@@ -1,0 +1,101 @@
+.sidenav-open {
+    flex-direction: column;
+    position: absolute;
+    top: 55px;
+    bottom: 0;
+    left: 0;
+    width: 240px;
+    background-color: #fff;
+}
+
+.sidenav-open li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 40px;
+    width: 100%;
+    max-width: 192px;
+    padding: 0 24px;
+    overflow: hidden;
+    color: #030303;
+    cursor: pointer;
+}
+
+.sidenav-open li:hover, .sidenav-links li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sidenav-open svg {
+    color: #606060;
+}
+
+.sidenav-open li:hover > svg, .sidenav-open li:active > svg, 
+.sidenav-links li:hover > svg, .sidenav-links li:active > svg {
+    color: #f00;
+}
+
+.sidenav-open p {
+    margin: 2px 0 0 24px;
+}
+
+.sidenav-top, .sidenav-middle {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 12px 0;
+}
+
+.sidenav-middle {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin-section {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px 32px;
+}
+
+.signin-section h4 {
+    color: #030303;
+    font-size: 14px;
+    line-height: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.sidenav-closed {
+    position: absolute;
+    top: 55px;
+    bottom: 0;
+    left: 0;
+    width: 70px;
+    background-color: #fff;
+    color: #030303;
+}
+
+.sidenav-links {
+    flex-direction: column;
+    margin-top: 4px;
+}
+
+.sidenav-links p {
+    font-size: 10px;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidenav-links li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 16px 0 14px;
+    cursor: pointer;
+}
+
+.sidenav-links svg {
+    margin-bottom: 6px;
+    color: #606060;
+}

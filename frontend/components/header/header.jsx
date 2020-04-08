@@ -16,7 +16,7 @@ class Header extends React.Component {
     }
 
     render(){
-        const { currentUser, logout } = this.props;
+        const { currentUser, handleSideNavClick, logout } = this.props;
         const rightRender = currentUser ? (
                 <DropdownMenu currentUser={currentUser} logout={logout} />
         ) : (<div className='signin-btn flex' onClick={this._loginClick}>
@@ -27,7 +27,7 @@ class Header extends React.Component {
         return (
             <nav className='header-nav flex'>
                 <section className='left flex'>
-                    <button><FontAwesomeIcon icon={faBars} className='large-icon'/></button>
+                    <button onClick={handleSideNavClick}><FontAwesomeIcon icon={faBars} className='bars large-icon'/></button>
                     <Link to='/'>
                         <img src={window.logo} className='logo' alt='ViewTube'/>
                     </Link>

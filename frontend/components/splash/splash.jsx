@@ -1,4 +1,6 @@
 import React from 'react';
+import SideNavOpen from '../sidenav/sidenav_open';
+import SideNavClosed from '../sidenav/sidenav_closed';
 
 class Splash extends React.Component {
     constructor(props) {
@@ -11,12 +13,15 @@ class Splash extends React.Component {
     }
 
     render() {
-        const { currentUser, logout } = this.props;
+        const { currentUser, sideNavOpen, logout } = this.props;
+        const sidenav = sideNavOpen ? (
+            <SideNavOpen currentUser={currentUser} login={this._loginClick} />
+        ) : (
+            <SideNavClosed />
+        );
         return (
             <>
-            <div>
-                splash
-            </div>
+            { sidenav }
             </>
         )
     }

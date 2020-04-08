@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faBars, faVideo } from '@fortawesome/free-solid-svg-icons';
 import SearchBar from './search_bar/search_bar';
+import DropdownMenu from './dropdown_menu/dropdown_menu';
 
 class Header extends React.Component {
     constructor(props) {
@@ -16,16 +17,30 @@ class Header extends React.Component {
 
     render(){
         const { currentUser, logout } = this.props;
+        const rightRender = currentUser ? (
+                <DropdownMenu currentUser={currentUser} logout={logout} />
+        ) : (<div className='signin-btn flex' onClick={this._loginClick}>
+                <FontAwesomeIcon icon={faUserCircle} className='small-icon'/>
+                <p>SIGN IN</p>
+            </div>);
+        
         return (
-            <nav className='header-nav'>
-                <Link to='/'>
-                    <img src={window.logo} className='logo' alt='ViewTube'/>
-                </Link>
-                <SearchBar />
-                <button className='sign-in-button' onClick={this._loginClick}>
-                    <FontAwesomeIcon icon={faUserCircle} />
-                    SIGN IN
-                </button>
+            <nav className='header-nav flex'>
+                <section className='left flex'>
+                    <button><FontAwesomeIcon icon={faBars} className='large-icon'/></button>
+                    <Link to='/'>
+                        <img src={window.logo} className='logo' alt='ViewTube'/>
+                    </Link>
+                </section>
+                
+                <section className='center'>
+                    <SearchBar />
+                </section>
+
+                <section className='right flex'>
+                    <button><FontAwesomeIcon icon={faVideo} className='small-icon'/></button>
+                    {rightRender}
+                </section>
             </nav>
         ) 
     }

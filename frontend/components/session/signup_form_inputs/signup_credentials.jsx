@@ -33,7 +33,7 @@ const SignupCredentials = ({ email, username, password, handleChange, errors }) 
                 </div>
             </div>
             <div className='signup-password'>
-                <input className={passwordError} type="text" placeholder="Password"
+                <input className={passwordError} type="password" placeholder="Password"
                     value={password}
                     onChange={handleChange('password')} />
                 <div className={passwordErrorDisplay}>

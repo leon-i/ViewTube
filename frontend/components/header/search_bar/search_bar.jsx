@@ -4,10 +4,10 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const SearchBar = () => {
     return (
-        <div className='search-bar'>
+        <div className='search-bar flex'>
             <input type="text" placeholder='Search'/>
-            <button>
-                <FontAwesomeIcon icon={faSearch} />
+            <button className='search-btn'>
+                <FontAwesomeIcon icon={faSearch} className='small-icon' />
             </button>
         </div>
     )

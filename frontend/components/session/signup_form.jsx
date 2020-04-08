@@ -23,7 +23,6 @@ class SignupForm extends React.Component {
     }
 
     organizeErrors(errors) {
-        debugger
         const errorObj = {};
         errors.forEach(error => {
             const firstWord = error.split(' ')[0];

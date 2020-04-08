@@ -41,6 +41,7 @@ body {
     margin-right: 16px;
     box-sizing: border-box;
     cursor: pointer;
+    background: transparent;
 }
 
 .left {
@@ -50,6 +51,11 @@ body {
 
 .left button {
     margin-bottom: 4px;
+}
+
+.left button svg {
+    max-height: 24px;
+    max-width: 24px;
 }
 
 .XS-icon {

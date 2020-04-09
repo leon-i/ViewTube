@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
-import VideoUploadForm from '../video/video_upload_form';
+import VideoUploadFormContainer from '../video/video_upload_form/video_upload_form_container';
 
 const Modal = ({ modal, closeModal }) => {
     if (!modal) return null;
     let component;
     switch(modal) {
         case 'videoUpload':
-            component = <VideoUploadForm />;
+            component = <VideoUploadFormContainer />;
             break;
         default:
             return null;

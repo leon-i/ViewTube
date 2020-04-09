@@ -38,7 +38,8 @@ class Header extends React.Component {
                 </section>
 
                 <section className='right flex'>
-                    <button className='video-btn' onClick={() => openModal('videoUpload')}>
+                    <button className='video-btn' 
+                    onClick={() => currentUser ? openModal('videoUpload') : this._loginClick() }>
                         <FontAwesomeIcon icon={faVideo} className='XS-icon'/>
                     </button>
                     {rightRender}

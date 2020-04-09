@@ -41,6 +41,9 @@ body {
     margin-right: 16px;
     box-sizing: border-box;
     cursor: pointer;
+}
+
+.header-nav button:not(.search-btn) {
     background: transparent;
 }
 
@@ -54,8 +57,15 @@ body {
 }
 
 .left button svg {
-    max-height: 24px;
-    max-width: 24px;
+    max-height: 18px;
+    max-width: 20px;
+    color: #333;
+}
+
+.video-btn svg {
+    color: #333;
+    min-height: 16px;
+    min-width: 20px;
 }
 
 .XS-icon {
@@ -79,7 +89,7 @@ body {
 }
 
 .bars {
-    margin-right: 5px;
+    margin-right: 7px;
 }
 
 .center {
@@ -164,7 +174,6 @@ body {
     display: block;
     position: fixed;
     right: 75px;
-
     top: 8px;
     z-index: 40;
     width: 300px;

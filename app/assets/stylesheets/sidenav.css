@@ -67,7 +67,7 @@
     top: 55px;
     bottom: 0;
     left: 0;
-    width: 70px;
+    width: 72px;
     background-color: #fff;
     color: #030303;
 }
@@ -83,6 +83,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-bottom: 4px;
 }
 
 .sidenav-links li {
@@ -96,6 +97,6 @@
 }
 
 .sidenav-links svg {
-    margin-bottom: 6px;
+    margin: 4px 0 10px 0;
     color: #606060;
 }

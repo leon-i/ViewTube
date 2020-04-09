@@ -38,7 +38,7 @@ class Header extends React.Component {
                 </section>
 
                 <section className='right flex'>
-                    <button><FontAwesomeIcon icon={faVideo} className='small-icon'/></button>
+                    <button className='video-btn'><FontAwesomeIcon icon={faVideo} className='XS-icon'/></button>
                     {rightRender}
                 </section>
             </nav>

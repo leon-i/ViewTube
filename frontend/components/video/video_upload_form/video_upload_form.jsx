@@ -42,6 +42,7 @@ class VideoUploadForm extends React.Component {
                 title: file.name,
                 fileName: file.name,
                 videoUrl: fileReader.result,
+                step: this.state.step + 1
             })
         }
     }

@@ -17,8 +17,9 @@ const Step2 = ({ closeModal, title, fileName, handleChange, handleSubmit }) => {
                         <div className='outer'>
                             <p className='textarea-header'>Title(required)</p>
                             <textarea className='textarea' cols="30" rows="10" 
-                                placeholder='Add a title that describes your video' onChange={handleChange('title')}>
-                                {title}
+                                placeholder='Add a title that describes your video' 
+                                onChange={handleChange('title')}
+                                value={title}>
                             </textarea>
                         </div>
                     </div>

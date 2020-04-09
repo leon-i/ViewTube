@@ -1,0 +1,93 @@
+.video-upload-form {
+    flex-direction: column;
+    outline: none;
+    z-index: 50;
+    top: 0px;
+    left: 267px;
+    box-sizing: border-box;
+    /* height: 100%;
+    min-height: 592px;
+    max-height: 592px; */
+    height: 592px;
+    width: 960px;
+    border-radius: 6px;
+    margin: 4% 0;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 
+        0 9px 46px 8px rgba(0, 0, 0, 0.12), 
+        0 11px 15px -7px rgba(0, 0, 0, 0.4);
+}
+
+.video-upload-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px 0 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    height: 64px;
+}
+
+.video-upload-header h2 {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 675px;
+    margin-right: 16px;
+}
+
+.video-upload-header svg {
+    margin-left: auto;
+    color: rgba(0, 0, 0, 0.55);
+    font-size: 1.4em;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.video-upload-header svg:hover {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.video-upload-form-content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.video-upload-form-content img {
+    margin-top: 100px;
+    min-width: 126px;
+    height: 126px;
+}
+
+.video-upload-form-content h4 {
+    margin-top: 23px;
+    font-size: 16px;
+}
+
+.video-upload-form-content p {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 2px;
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.video-upload-form-content button {
+    margin-top: 26px;
+    margin-bottom: auto;
+    background-color: #065FD4;
+    color: #FFFFFF;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 2px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

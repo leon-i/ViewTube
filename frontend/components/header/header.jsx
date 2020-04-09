@@ -16,7 +16,7 @@ class Header extends React.Component {
     }
 
     render(){
-        const { currentUser, handleSideNavClick, logout } = this.props;
+        const { currentUser, handleSideNavClick, logout, openModal } = this.props;
         const rightRender = currentUser ? (
                 <DropdownMenu currentUser={currentUser} logout={logout} />
         ) : (<div className='signin-btn flex' onClick={this._loginClick}>
@@ -38,7 +38,9 @@ class Header extends React.Component {
                 </section>
 
                 <section className='right flex'>
-                    <button className='video-btn'><FontAwesomeIcon icon={faVideo} className='XS-icon'/></button>
+                    <button className='video-btn' onClick={() => openModal('videoUpload')}>
+                        <FontAwesomeIcon icon={faVideo} className='XS-icon'/>
+                    </button>
                     {rightRender}
                 </section>
             </nav>

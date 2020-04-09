@@ -7,7 +7,7 @@ const SearchBar = () => {
         <div className='search-bar flex'>
             <input type="text" placeholder='Search'/>
             <button className='search-btn'>
-                <FontAwesomeIcon icon={faSearch} className='small-icon' />
+                <FontAwesomeIcon icon={faSearch} className='XS-icon' />
             </button>
         </div>
     )

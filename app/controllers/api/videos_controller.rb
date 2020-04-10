@@ -1,6 +1,6 @@
 class Api::VideosController < ApplicationController
     def index
-        @videos = Video.all.shuffle
+        @videos = Video.with_attached_video.all
     end
 
     def show

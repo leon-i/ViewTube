@@ -211,14 +211,20 @@
     color: rgba(0, 0, 0, 0.25);
 }
 
-.upload-btn, .thumbnail {
+.upload-btn {
+    height: 72px;
+    width: 128px;
+}
+
+.thumbnail {
     height: 74px;
     width: 128px;
 }
 
 .thumbnail {
     border-radius: 2px;
-    object-fit: cover;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.55);
 }
 
 .thumbnail-upload-container {
@@ -239,7 +245,7 @@
 .video-mini-player {
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: 68px;
+    margin-top: 70px;
     padding-right: 40px;
 }
 

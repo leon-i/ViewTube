@@ -1,16 +1,13 @@
 .video-player {
-    height: 160px;
-    width: 285px;
     overflow: hidden;
     cursor: pointer;
 }
 
 .video-player video {
     box-sizing: border-box;
-    height: inherit;
-    width: inherit;
-    max-height: 160px;
-    max-width: 285px;
+    height: 100%;
+    width: 100%;
+    min-height: 160px;
     outline: none;
     background: none;
     overflow: hidden;

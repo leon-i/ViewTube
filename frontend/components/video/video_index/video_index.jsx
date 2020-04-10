@@ -1,13 +1,17 @@
 import React from 'react';
 
 class VideoIndex extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = this.props.videos;
+    }
+
     componentDidMount() {
         this.props.requestVideos();
     }
 
     render() {
         const videos = Object.values(this.props.videos);
-        debugger
         const videoRenders = videos.map(video => (
             <div className='video-container'>
                 <div className='video-player'>
@@ -24,12 +28,10 @@ class VideoIndex extends React.Component {
             </div>
         ))
         return (
-            <div className='video-index-container'>
+            <div className='video-index-container flex'>
+                <h1 className='row-title'>Recommended</h1>
                 <section className='video-index flex'>
-                    <h1 className='row-title'>Recommended</h1>
-                    <section className='video-row flex'>
                             { videoRenders }
-                    </section>
                 </section>
             </div>
         )

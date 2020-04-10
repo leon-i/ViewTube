@@ -1,9 +1,9 @@
 .video-index-container {
+    flex-direction: column;
     position: absolute;
     top: 55px;
     left: 240px;
-    width: 100%;
-    background: transparent;
+    width: calc(100% - 250px);
 }
 
 .row-title {
@@ -14,18 +14,26 @@
 }
 
 .video-index {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    margin: 0 24px;
+    margin-left: 24px;
 }
 
-.video-row {
+/* .video-row {
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-start;
     width: 100%;
-    margin-bottom: 16px;
-}
+    margin: 0 16px 16px 36px; 
+} */
 
 .video-container {
-    margin: 0 16px 40px 16px;
+    margin: 0 16px 40px 0;
+    width: calc(100% / 4.25);
+}
+
+.video-details {
+    box-sizing: border-box;
+    font-size: 12px;
 }

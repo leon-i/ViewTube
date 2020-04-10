@@ -15,6 +15,9 @@ class Video < ApplicationRecord
         foreign_key: :uploader_id,
         class_name: :User
     
+    has_one_attached :video
+    has_one_attached :thumbnail
+    
     def self.format_for_index
         # first_eight = Video.order()
     end

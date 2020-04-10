@@ -30,6 +30,7 @@
 
 .video-container {
     margin: 0 16px 40px 0;
+    min-width: 256px;
     width: calc(100% / 4.25);
 }
 

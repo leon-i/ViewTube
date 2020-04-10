@@ -92,7 +92,7 @@
     cursor: pointer;
 }
 
-.video-upload-form-content input {
+.video-upload-form-content input, .upload-btn input {
     display: none;
 }
 
@@ -170,6 +170,59 @@
     letter-spacing: 0.011em;
     margin-top: 8px;
     margin-bottom: 3px;
+}
+
+.thumbnail-upload-form {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.thumbnail-upload-form h4 {
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.thumbnail-upload-form p {
+    font-size: 12px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.55);
+    padding-bottom: 6px;
+}
+
+.upload-btn {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.upload-btn svg {
+    font-size: 1.2em;
+    color: rgba(0, 0, 0, 0.35);
+    margin: 15px 0px 2px 0px;
+}
+
+.upload-btn p {
+    color: rgba(0, 0, 0, 0.25);
+}
+
+.upload-btn, .thumbnail {
+    height: 74px;
+    width: 128px;
+}
+
+.thumbnail {
+    border-radius: 2px;
+    object-fit: cover;
+}
+
+.thumbnail-upload-container {
+    flex-direction: row;
 }
 
 .video-upload-player-container {

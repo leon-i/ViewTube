@@ -10,10 +10,12 @@ class VideoUploadForm extends React.Component {
             description: '',
             videoFile: null,
             videoUrl: '',
-            step: 1
+            thumbnailFile: null,
+            thumbnailUrl: ''
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleThumbnail = this.handleThumbnail.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -25,6 +27,22 @@ class VideoUploadForm extends React.Component {
     handleChange(field) {
         return (e) => {
             this.setState({ [field]: e.target.value })
+        }
+    }
+
+    handleThumbnail(e) {
+        const imgFile = e.target.files[0];
+        if (imgFile) {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(imgFile);
+            fileReader.onloadend = () => {
+                this.setState({
+                    thumbnailFile: imgFile,
+                    thumbnailUrl: fileReader.result
+                });
+            }
+        } else {
+            this.setState({ thumbnailFile: null, thumbnailUrl: ''})
         }
     }
 
@@ -40,7 +58,7 @@ class VideoUploadForm extends React.Component {
                 this.setState({
                     title: file.name,
                     videoFile: file,
-                    videoUrl: fileReader.result.data
+                    videoUrl: fileReader.result
                 })
             }
         } else {
@@ -50,26 +68,33 @@ class VideoUploadForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const { title, description, videoFile } = this.state;
+        const { title, description, videoFile, thumbnailFile } = this.state;
+        debugger
         const formData = new FormData();
         formData.append('video[title]', title);
         formData.append('video[description]', description);
         formData.append('video[uploader_id]', this.props.currentUser.id)
         formData.append('video[video]', videoFile);
+        formData.append('video[thumbnail]', thumbnailFile);
         this.props.createVideo(formData);
     }
 
     render() {
         const { closeModal } = this.props;
-        const currentStep = !this.state.videoFile ? (
+        const { title, videoFile, videoUrl, thumbnailFile, thumbnailUrl } = this.state;
+        const currentStep = !videoFile ? (
             <Step1 closeModal={closeModal}
                 findFileInput={this.findFileInput}
                 handleUpload={this.handleUpload} />
         ) : (
                 <Step2 closeModal={closeModal}
-                    title= {this.state.title}
-                    fileName={this.state.videoFile.name}
-                    videoUrl={this.state.videoUrl}
+                    title= {title}
+                    fileName={videoFile.name}
+                    videoUrl={videoUrl}
+                    thumbnailFile={thumbnailFile}
+                    thumbnailUrl={thumbnailUrl}
+                    findFileInput={this.findFileInput}
+                    handleThumbnail={this.handleThumbnail}
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit} />
         );

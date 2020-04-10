@@ -12,3 +12,10 @@
     background: none;
     overflow: hidden;
 }
+
+.video-player img {
+    max-height: 160px;
+    width: 100%;
+    object-fit: contain;
+    background: black;
+}

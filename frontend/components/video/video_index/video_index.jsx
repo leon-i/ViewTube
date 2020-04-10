@@ -12,11 +12,12 @@ class VideoIndex extends React.Component {
 
     render() {
         const videos = Object.values(this.props.videos);
-        const videoRenders = videos.map(video => (
-            <div className='video-container'>
+        const videoRenders = videos.map((video, idx) => (
+            <div key={idx} className='video-container'>
                 <div className='video-player'>
-                    <video src={video.videoUrl}
-                    controls={true}></video>
+                    {/* <video src={video.videoUrl}
+                    controls={true}></video> */}
+                    <img src={video.thumbnailUrl} alt="video-thumbnail"/>
                 </div>
                     <div className='video-details flex'>
                         <div className='detail-text flex'>

@@ -1,9 +1,15 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faImage } from '@fortawesome/free-solid-svg-icons';
 
-const Step2 = ({ closeModal, title, fileName, videoUrl, handleChange, handleSubmit }) => {
+const Step2 = ({ closeModal, title, fileName, videoUrl, thumbnailFile, thumbnailUrl, findFileInput, handleThumbnail, handleChange, handleSubmit }) => {
     const errorClass = title.length ? 'textarea-container title' : ' textarea-container title-error';
+    const thumbnail = thumbnailFile ? (
+        <img className='thumbnail' src={thumbnailUrl} alt="thumbnail"/>
+    ) : (
+        <div></div>
+    );
+    
     return (
         <>
             <header className='video-upload-header flex'>
@@ -29,6 +35,20 @@ const Step2 = ({ closeModal, title, fileName, videoUrl, handleChange, handleSubm
                             <textarea className='textarea' cols="30" rows="10"
                                 placeholder='Tell viewers about your video' onChange={handleChange('description')}>
                             </textarea>
+                        </div>
+                    </div>
+                    <div className='thumbnail-upload-form flex'>
+                        <h4>Thumbnail</h4>
+                        <p>Select or upload a picture that shows what's in your video.
+                            A good thumbnail stands out and draws viewers' attention.
+                        </p>
+                        <div className='thumbnail-upload-container flex'>
+                            <div className='upload-btn flex' onClick={findFileInput}>
+                                <FontAwesomeIcon icon={faImage} />
+                                <p>Upload thumbnail</p>
+                                <input type="file" name="file" id='file' accept='image/*' onChange={handleThumbnail} />
+                            </div>
+                            { thumbnail }
                         </div>
                     </div>
                 </section>

@@ -1,6 +1,6 @@
 class Api::VideosController < ApplicationController
     def index
-        @videos = Video.with_attached_video.all
+        @videos = Video.with_attached_thumbnail.all
     end
 
     def show
@@ -39,6 +39,6 @@ class Api::VideosController < ApplicationController
     private
 
     def video_params
-        params.require(:video).permit(:uploader_id, :title, :description, :video)
+        params.require(:video).permit(:uploader_id, :title, :description, :video, :thumbnail)
     end
 end

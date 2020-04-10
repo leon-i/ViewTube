@@ -13,7 +13,7 @@ const Step1 = ({closeModal, findFileInput, handleUpload}) => (
             <h4>Drag and drop a file you want to upload</h4>
             <p>Your video will be private until you publish it</p>
             <button onClick={findFileInput}>SELECT FILE
-                <input type="file" name="file" id='file' accept='video/*' onClick={handleUpload} />
+                <input type="file" name="file" id='file' accept='video/*' onChange={handleUpload} />
             </button>
         </section>
     </>

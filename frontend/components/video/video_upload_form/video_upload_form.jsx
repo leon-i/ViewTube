@@ -30,18 +30,19 @@ class VideoUploadForm extends React.Component {
 
     handleUpload(e) {
         const file = e.target.files[0];
-        const fileReader = new FileReader();
 
-        fileReader.onloadend = () => {
-            this.setState({
-                title: file.name,
-                videoFile: file,
-                videoUrl: fileReader.result
-            })
-        }
 
         if (file) {
+            const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
+
+            fileReader.onloadend = () => {
+                this.setState({
+                    title: file.name,
+                    videoFile: file,
+                    videoUrl: fileReader.result.data
+                })
+            }
         } else {
             this.setState({ videoFile: null, videoUrl: '' })
         }
@@ -68,6 +69,7 @@ class VideoUploadForm extends React.Component {
                 <Step2 closeModal={closeModal}
                     title= {this.state.title}
                     fileName={this.state.videoFile.name}
+                    videoUrl={this.state.videoUrl}
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit} />
         );

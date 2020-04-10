@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const Step2 = ({ closeModal, title, fileName, handleChange, handleSubmit }) => {
+const Step2 = ({ closeModal, title, fileName, videoUrl, handleChange, handleSubmit }) => {
     const errorClass = title.length ? 'textarea-container title' : ' textarea-container title-error';
     return (
         <>
@@ -33,7 +33,9 @@ const Step2 = ({ closeModal, title, fileName, handleChange, handleSubmit }) => {
                     </div>
                 </section>
                 <section className='video-mini-player flex'>
-                    <div className='video-container'>
+                    <div className='video-upload-player-container'>
+                        <video src={videoUrl}
+                            controls={true}></video>
                     </div>
                     <div className='video-info flex'>
                         <p>Filename</p>

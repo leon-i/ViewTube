@@ -1,0 +1,31 @@
+.video-index-container {
+    position: absolute;
+    top: 55px;
+    left: 240px;
+    width: 100%;
+    background: transparent;
+}
+
+.row-title {
+    align-self: flex-start;
+    margin: 36px 0 24px 24px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.video-index {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 24px;
+}
+
+.video-row {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.video-container {
+    margin: 0 16px 40px 16px;
+}

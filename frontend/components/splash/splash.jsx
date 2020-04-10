@@ -23,6 +23,7 @@ class Splash extends React.Component {
         return (
             <>
             { sidenav }
+            <VideoIndexContainer />
             </>
         )
     }

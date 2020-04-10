@@ -172,17 +172,22 @@
     margin-bottom: 3px;
 }
 
+.video-upload-player-container {
+    height: 170px;
+    width: 300px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.video-upload-player-container video {
+    height: inherit;
+    width: inherit;
+}
+
 .video-mini-player {
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 68px;
     padding-right: 40px;
-}
-
-.video-container {
-    height: 170px;
-    width: 300px;
-    background: rgba(0, 0, 0, 0.2);
 }
 
 .video-info {

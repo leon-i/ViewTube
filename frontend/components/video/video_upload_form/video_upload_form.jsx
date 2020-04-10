@@ -6,10 +6,9 @@ class VideoUploadForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            uploader_id: this.props.currentUser.id,
             title: '',
             description: '',
-            fileName: '',
+            videoFile: null,
             videoUrl: '',
             step: 1
         }
@@ -33,34 +32,42 @@ class VideoUploadForm extends React.Component {
         const file = e.target.files[0];
         const fileReader = new FileReader();
 
-        if (file) {
-            fileReader.readAsDataURL(file);
-        }
-
         fileReader.onloadend = () => {
             this.setState({
                 title: file.name,
-                fileName: file.name,
-                videoUrl: fileReader.result,
-                step: this.state.step + 1
+                videoFile: file,
+                videoUrl: fileReader.result
             })
+        }
+
+        if (file) {
+            fileReader.readAsDataURL(file);
+        } else {
+            this.setState({ videoFile: null, videoUrl: '' })
         }
     }
 
     handleSubmit(e) {
-        this.props.createVideo(this.state);
+        e.preventDefault();
+        const { title, description, videoFile } = this.state;
+        const formData = new FormData();
+        formData.append('video[title]', title);
+        formData.append('video[description]', description);
+        formData.append('video[uploader_id]', this.props.currentUser.id)
+        formData.append('video[video]', videoFile);
+        this.props.createVideo(formData);
     }
 
     render() {
         const { closeModal } = this.props;
-        const currentStep = this.state.step === 1 ? (
+        const currentStep = !this.state.videoFile ? (
             <Step1 closeModal={closeModal}
                 findFileInput={this.findFileInput}
                 handleUpload={this.handleUpload} />
         ) : (
                 <Step2 closeModal={closeModal}
                     title= {this.state.title}
-                    fileName={this.state.fileName}
+                    fileName={this.state.videoFile.name}
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit} />
         );

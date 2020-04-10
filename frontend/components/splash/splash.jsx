@@ -1,6 +1,7 @@
 import React from 'react';
 import SideNavOpen from '../sidenav/sidenav_open';
 import SideNavClosed from '../sidenav/sidenav_closed';
+import VideoIndexContainer from '../video/video_index/video_index_container';
 
 class Splash extends React.Component {
     constructor(props) {

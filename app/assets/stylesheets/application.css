@@ -18,9 +18,8 @@ body {
     background: #f9f9f9;
 }
 
- .header-nav {
-    opacity: 0.9;
-    background: white;
+.header-nav {
+    background: rgba(255, 255, 255, 0.98);
     position: fixed;
     z-index: 10;
     width: 100%;

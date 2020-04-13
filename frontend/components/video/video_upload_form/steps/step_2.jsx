@@ -9,6 +9,11 @@ const Step2 = ({ closeModal, title, fileName, videoUrl, thumbnailFile, thumbnail
     ) : (
         <div></div>
     );
+    const publishButton = (thumbnailFile && title) ? (
+        <button className='publish-btn' onClick={handleSubmit}>PUBLISH</button>
+    ) : (
+        <button className='publish-btn disabled'>PUBLISH</button>
+    )
     
     return (
         <>
@@ -61,7 +66,7 @@ const Step2 = ({ closeModal, title, fileName, videoUrl, thumbnailFile, thumbnail
                         <p>Filename</p>
                         <h4>{fileName}</h4>
                     </div>
-                    <button onClick={handleSubmit}>PUBLISH</button>
+                    { publishButton }
                 </section>
             </section>
         </>

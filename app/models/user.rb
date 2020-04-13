@@ -23,6 +23,14 @@ class User < ApplicationRecord
     has_many :videos,
         foreign_key: :uploader_id,
         class_name: :Video
+    
+    has_many :video_views,
+        foreign_key: :viewer_id,
+        class_name: :View
+    
+    has_many :viewed_videos,
+        through: :video_views,
+        source: :video
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)

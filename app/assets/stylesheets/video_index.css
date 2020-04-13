@@ -20,21 +20,79 @@
     margin-left: 24px;
 }
 
-/* .video-row {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 100%;
-    margin: 0 16px 16px 36px; 
-} */
-
 .video-container {
     margin: 0 16px 40px 0;
     min-width: 256px;
     width: calc(100% / 4.25);
+    cursor: pointer;
 }
 
 .video-details {
     box-sizing: border-box;
-    font-size: 12px;
+    font-size: 14px;
+}
+
+.video-index-thumbnail {
+    overflow: hidden;
+    cursor: pointer;
+    height: 160px;
+}
+
+.video-index-thumbnail video {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    min-height: 160px;
+    outline: none;
+    background: none;
+    overflow: hidden;
+}
+
+.video-index-thumbnail img {
+    max-height: 160px;
+    width: 100%;
+    object-fit: contain;
+    background: black;
+}
+
+.video-details {
+    flex-direction: row;
+}
+
+.video-details svg {
+    display: inline-block;
+    font-size: 36px;
+    margin: 12px 12px 0 0;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.detail-text {
+    flex-direction: column;
+    width: 100%;
+}
+
+.detail-text h4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.17em;
+    font-weight: bold;
+    margin: 12px 0 6px 0;
+    color: #030303;
+}
+
+.detail-text a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 15.5px;
+    line-height: 18px;
+    margin-bottom: 1px;
+}
+
+.detail-text a, .detail-text p {
+    text-decoration: none;
+    color: #606060;
+}
+
+.detail-text a:hover {
+    color: #030303;
 }

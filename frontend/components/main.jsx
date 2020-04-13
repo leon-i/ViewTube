@@ -1,6 +1,8 @@
 import React from 'react';
 import HeaderContainer from './header/header_container';
 import SplashContainer from './splash/splash_container';
+import VideoShowContainer from './video/video_show/video_show_container';
+import { Route, Switch } from "react-router-dom";
 
 class Main extends React.Component {
     constructor(props) {
@@ -21,7 +23,11 @@ class Main extends React.Component {
         return (
             <main className='main-content'>
                 <HeaderContainer handleSideNavClick={this.handleSideNavClick} />
-                <SplashContainer sideNavOpen={this.state.sideNavOpen} />
+                <Switch>
+                    <Route exact path='/' 
+                    render={props => <SplashContainer {...props} sideNavOpen={this.state.sideNavOpen} />} />
+                    <Route path='/videos/:videoId' component={VideoShowContainer} />
+                </Switch>
             </main> 
         )
     }

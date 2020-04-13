@@ -1,4 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { createView } from '../../../util/video_api_util';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 class VideoIndex extends React.Component {
     constructor(props) {
@@ -10,20 +14,34 @@ class VideoIndex extends React.Component {
         this.props.requestVideos();
     }
 
+    handleVideoClick(video) {
+        return (e) => {
+            const className = e.target.className;
+            if (typeof className !== 'object' && className !== 'username') {
+                const { currentUser, history } = this.props;
+                createView({video_id: video.id, viewer_id: currentUser.id});
+                history.push(`videos/${video.id}`);
+            }
+        } 
+    }
+
     render() {
         const videos = Object.values(this.props.videos);
+        if (!videos) return null;
         const videoRenders = videos.map((video, idx) => (
-            <div key={idx} className='video-container'>
-                <div className='video-player'>
-                    {/* <video src={video.videoUrl}
-                    controls={true}></video> */}
+            <div key={idx} className='video-container' onClick={this.handleVideoClick(video)}>
+                <div className='video-index-thumbnail'>
                     <img src={video.thumbnailUrl} alt="video-thumbnail"/>
                 </div>
                     <div className='video-details flex'>
+                        <Link to={`/users/${video.uploader.id}`}>
+                            <FontAwesomeIcon icon={faUserCircle} />
+                        </Link>
                         <div className='detail-text flex'>
                             <h4>{video.title}</h4>
-                            <p>{video.uploader.username}</p>
-                            <p>View/date placeholder</p>
+                            <Link to={`/users/${video.uploader.id}`} 
+                                className='username'>{video.uploader.username}</Link>
+                            <p>{`${video.shorthandViews} • ${video.timeSinceUpload}`}</p>
                         </div>
                     </div>
             </div>

@@ -1,0 +1,33 @@
+.video-show {
+    position: relative;
+    flex-direction: row;
+    top: 55px;
+    width: 100%;
+    background-color: red;
+}
+
+.show-main {
+    padding: 24px 24px 0 0;
+    margin-left: 24px;
+    height: inherit;
+    background: blue;
+}
+
+.video-player-container {
+    width: 100%;
+}
+
+.video-player-container video {
+    min-height: 480px;
+    /* max-height: 1080px; */
+    /* height: calc(100% / 1.5); */
+    min-width: 945px;
+    /* display: none; */
+}
+
+.show-video-list {
+    padding: 24px 24px 0 0;
+    min-width: 300px;
+    width: calc(100% / 3);
+    background: yellow;
+}

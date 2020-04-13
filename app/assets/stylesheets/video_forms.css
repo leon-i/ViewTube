@@ -276,7 +276,9 @@
     margin: 0 16px 0 12px;
 }
 
-.video-mini-player button {
+/* .video-mini-player button */
+
+.publish-btn {
     align-self: center;
     margin-top: 20px;
     margin-bottom: auto;
@@ -292,4 +294,9 @@
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }

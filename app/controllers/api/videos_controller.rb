@@ -5,6 +5,7 @@ class Api::VideosController < ApplicationController
 
     def show
         @video = Video.find(params[:id])
+        @video = Video.with_attached_video.find(params[:id])
     end
 
     def create

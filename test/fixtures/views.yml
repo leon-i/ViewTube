@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: views
+#
+#  id         :bigint           not null, primary key
+#  viewer_id  :integer
+#  video_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  viewer_id: 1
+  video_id: 1
+
+two:
+  viewer_id: 1
+  video_id: 1

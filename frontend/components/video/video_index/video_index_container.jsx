@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { requestVideos } from '../../../actions/video_actions';
 import VideoIndex from './video_index';
 
@@ -12,4 +12,4 @@ const mapDispatchToProps = dispatch => ({
     requestVideos: data => dispatch(requestVideos(data)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoIndex);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(VideoIndex));

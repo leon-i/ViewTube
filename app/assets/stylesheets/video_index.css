@@ -75,8 +75,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1.17em;
+    line-height: 1.17em;
     font-weight: bold;
-    margin: 12px 0 6px 0;
+    margin: 12px 0 4px 0;
     color: #030303;
 }
 

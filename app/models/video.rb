@@ -58,9 +58,9 @@ class Video < ApplicationRecord
         elsif days_since >= 1
             days_since === 1 ? "1 day ago" : "#{days_since} days ago"
         elsif hours_since >= 1
-            hours_since === 1 ? "1 hour ago" : "#{hour} hours ago"
+            hours_since === 1 ? "1 hour ago" : "#{hours_since} hours ago"
         elsif minutes_since >= 1
-            minutes_since === 1 ? "1 minute ago" : "#{minute} minutes ago"
+            minutes_since === 1 ? "1 minute ago" : "#{minutes_since} minutes ago"
         else
             'Just now'
         end

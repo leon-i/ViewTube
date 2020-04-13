@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { createView } from '../../../util/video_api_util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import VideoSideIndexContainer from './video_side_index_container'
 
 class VideoShow extends React.Component {
     constructor(props) {
@@ -36,17 +37,23 @@ class VideoShow extends React.Component {
                     <div className='show-details-bottom-container flex'>
                         <div className='bottom-details-left'>
                             <div className='top-row flex'>
-                                <FontAwesomeIcon icon={faUserCircle} />
+                                <Link to={`/users/${video.uploader.id}`}>
+                                    <FontAwesomeIcon icon={faUserCircle} />
+                                </Link>
                                 <div className='uploader-info'>
-                                    <h4>{video.uploader.username}</h4>
+                                    <Link to={`/users/${video.uploader.id}`}>
+                                        <h4>{video.uploader.username}</h4>
+                                    </Link>
                                     <p>Subscriber placeholder</p>
                                 </div>
                             </div>
                             <span className='video-description'>{video.description}</span>
                         </div>
+                        <button className='subscribe-btn'>SUBSCRIBE</button>
                     </div>
                 </section>
                 <section className='show-video-list'>
+                    <VideoSideIndexContainer currentVideoId={this.props.match.params.videoId} />
                 </section>
             </div>
         )

@@ -92,6 +92,27 @@
     cursor: pointer;
 }
 
+.no-file-error {
+    display: none;
+}
+
+.file-error {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.file-error svg {
+    color: #CC0000;
+    margin-right: 12px;
+}
+
+.file-error p {
+    font-size: 13px;
+    line-height: 20px;
+}
+
 .video-upload-form-content input, .upload-btn input {
     display: none;
 }

@@ -19,7 +19,8 @@ class VideoIndex extends React.Component {
             const className = e.target.className;
             if (typeof className !== 'object' && className !== 'username') {
                 const { currentUser, history } = this.props;
-                createView({video_id: video.id, viewer_id: currentUser.id});
+                const viewer_id = currentUser ? currentUser.id : null;
+                createView({video_id: video.id, viewer_id: viewer_id});
                 history.push(`videos/${video.id}`);
             }
         } 

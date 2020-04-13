@@ -13,8 +13,8 @@ class VideoSideIndex extends React.Component {
     render() {
         const { videos, currentVideoId } = this.props;
         delete videos[currentVideoId];
-        const videoRenders = Object.values(videos).map( video => (
-            <VideoSideIndexItem video={video} />
+        const videoRenders = Object.values(videos).map((video, idx) => (
+            <VideoSideIndexItem key={idx} video={video} />
         ))
         return (
             <>

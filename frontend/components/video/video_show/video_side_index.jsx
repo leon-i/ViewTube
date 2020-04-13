@@ -32,20 +32,4 @@ class VideoSideIndex extends React.Component {
     }
 }
 
-// const VideoSideIndex = ({ videos, currentVideoId, currentUser }) => {
-//     delete videos[currentVideoId];
-//     const videoRenders = Object.values(videos).map((video, idx) => (
-//         <VideoSideIndexItem key={idx} video={video} />
-//     ))
-//     return (
-//             <>
-//                 <section className='side-index-header flex'>
-//                     <h2>Up next</h2>
-//                     <p>Autoplay placeholder</p>
-//                 </section>
-//                 {videoRenders}
-//             </>
-//     )
-// }
-
 export default VideoSideIndex;

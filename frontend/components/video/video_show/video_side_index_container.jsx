@@ -8,7 +8,7 @@ const mapStateToProps = ({ session, entities: { users, videos } }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    requestVideos: data => dispatch(requestVideos(data)),
+    requestVideos: data => dispatch(requestVideos(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoSideIndex);

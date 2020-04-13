@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { createView } from '../../../util/video_api_util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import VideoSideIndexContainer from './video_side_index_container'
+import VideoSideIndexContainer from './video_side_index_container';
 
 class VideoShow extends React.Component {
     constructor(props) {

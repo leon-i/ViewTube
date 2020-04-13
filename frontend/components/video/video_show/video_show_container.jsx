@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { requestVideo } from '../../../actions/video_actions';
+import { requestVideo, requestVideos } from '../../../actions/video_actions';
 import VideoShow from './video_show';
 
 const mapStateToProps = ({ session, entities: { users, videos } }, ownProps) => ({
@@ -8,7 +8,7 @@ const mapStateToProps = ({ session, entities: { users, videos } }, ownProps) => 
 });
 
 const mapDispatchToProps = dispatch => ({
-    requestVideo: videoId => dispatch(requestVideo(videoId)),
+    requestVideo: videoId => dispatch(requestVideo(videoId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoShow);

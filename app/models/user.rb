@@ -24,6 +24,10 @@ class User < ApplicationRecord
         foreign_key: :uploader_id,
         class_name: :Video
     
+    has_many :authored_comments,
+        foreign_key: :author_id,
+        class_name: :Comment
+    
     has_many :video_views,
         foreign_key: :viewer_id,
         class_name: :View

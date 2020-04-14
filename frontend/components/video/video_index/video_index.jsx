@@ -28,6 +28,7 @@ class VideoIndex extends React.Component {
 
     render() {
         const videos = Object.values(this.props.videos);
+        // const recommendedVideos = videos.slice(0, 8);
         if (!videos) return null;
         const videoRenders = videos.map((video, idx) => (
             <div key={idx} className='video-container' onClick={this.handleVideoClick(video)}>

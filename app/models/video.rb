@@ -20,11 +20,22 @@ class Video < ApplicationRecord
         foreign_key: :video_id,
         class_name: :View
     
+    has_many :comments, as: :commentable
+    
     has_one_attached :video
     has_one_attached :thumbnail
     
     def self.format_for_index
-        # first_eight = Video.order()
+        first_eight = Video.joins(:views)
+            .group('videos.id')
+            .order('COUNT(views.id) DESC')
+            .limit(8)
+        rest = Video.joins(:views)
+            .group('videos.id')
+            .order('COUNT(views.id) DESC')
+            .offset(8)
+        
+        first_eight.shuffle + rest.shuffle
     end
 
     def format_views

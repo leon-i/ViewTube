@@ -16,9 +16,9 @@ class Header extends React.Component {
     }
 
     render(){
-        const { currentUser, handleSideNavClick, logout, openModal } = this.props;
+        const { currentUser, handleSideNavClick, logout, openModal, history } = this.props;
         const rightRender = currentUser ? (
-                <DropdownMenu currentUser={currentUser} logout={logout} />
+                <DropdownMenu currentUser={currentUser} logout={() => logout().then(history.push('/'))} />
         ) : (<div className='signin-btn flex' onClick={this._loginClick}>
                 <FontAwesomeIcon icon={faUserCircle} className='small-icon'/>
                 <p>SIGN IN</p>

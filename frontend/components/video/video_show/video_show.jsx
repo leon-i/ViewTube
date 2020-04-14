@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { createView } from '../../../util/video_api_util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import VideoSideIndexContainer from './video_side_index_container';
+import CommentIndexContainer from '../../comments/comment_index_container';
 
 class VideoShow extends React.Component {
     constructor(props) {
@@ -51,6 +51,7 @@ class VideoShow extends React.Component {
                         </div>
                         <button className='subscribe-btn'>SUBSCRIBE</button>
                     </div>
+                    <CommentIndexContainer currentVideoId={this.props.match.params.videoId} />
                 </section>
                 <section className='show-video-list'>
                     <VideoSideIndexContainer currentVideoId={this.props.match.params.videoId} />

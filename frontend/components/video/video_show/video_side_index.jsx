@@ -1,9 +1,11 @@
 import React from 'react';
 import VideoSideIndexItem from './video_side_index_item';
+import { createView } from '../../../util/video_api_util';
 
 class VideoSideIndex extends React.Component {
     constructor(props) {
         super(props);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -14,11 +16,19 @@ class VideoSideIndex extends React.Component {
         if (prevProps.currentVideoId !== this.props.currentVideoId) this.props.requestVideos();
     }
 
+    handleClick(video) {
+        return (e) => {
+            const { currentUser } = this.props;
+            const viewer_id = currentUser ? currentUser.id : null;
+            createView({ video_id: video.id, viewer_id: viewer_id });
+        }
+    }
+
     render() {
         const { videos, currentVideoId } = this.props;
         delete videos[currentVideoId];
         const videoRenders = Object.values(videos).map((video, idx) => (
-            <VideoSideIndexItem key={idx} video={video} />
+            <VideoSideIndexItem key={idx} video={video} handleClick={this.handleClick} />
         ))
         return (
             <>

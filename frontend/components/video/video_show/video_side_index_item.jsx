@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
-const VideoSideIndexItem = ({ video }) => (
+const VideoSideIndexItem = ({ video, handleClick }) => (
     <div className='side-index-item flex'>
-        <Link to={`/videos/${video.id}`}>
+        <Link to={`/videos/${video.id}`} onClick={handleClick(video)}>
             <img src={video.thumbnailUrl} alt="video-thumbnail" />
         </Link>
         <div className='side-index-item-content flex'>
             <div className='side-index-item-details flex'>
                 <h2>
-                    <Link to={`/videos/${video.id}`}>
+                    <Link to={`/videos/${video.id}`} onClick={handleClick(video)}>
                         {video.title}
                     </Link>
                 </h2>

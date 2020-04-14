@@ -49,6 +49,8 @@ class Video < ApplicationRecord
             "#{displayed_digits}M views"
         elsif views > 100
             "#{displayed_digits}K views"
+        elsif views === 1
+            '1 view'
         else
             "#{displayed_digits} views"
         end

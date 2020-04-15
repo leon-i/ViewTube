@@ -58,3 +58,7 @@ a {
 video, img, button {
 	outline: none;
 }
+
+textarea {
+	font-family: Roboto, 'Noto Sans Myanmar UI',arial,sans-serif;
+}

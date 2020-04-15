@@ -12,7 +12,7 @@ class VideoShow extends React.Component {
 
     componentDidMount() {
         const { requestVideo, match } = this.props;
-        requestVideo(match.params.videoId);
+        requestVideo(match.params.videoId)
     }
 
     render() {

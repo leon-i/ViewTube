@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { requestVideo, requestVideos } from '../../../actions/video_actions';
+import { requestVideo } from '../../../actions/video_actions';
 import VideoShow from './video_show';
 
 const mapStateToProps = ({ session, entities: { users, videos } }, ownProps) => ({

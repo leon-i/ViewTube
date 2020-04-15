@@ -12,10 +12,6 @@ class VideoSideIndex extends React.Component {
         this.props.requestVideos();
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.currentVideoId !== this.props.currentVideoId) this.props.requestVideos();
-    }
-
     handleClick(video) {
         return (e) => {
             const { currentUser } = this.props;
@@ -26,8 +22,9 @@ class VideoSideIndex extends React.Component {
 
     render() {
         const { videos, currentVideoId } = this.props;
-        delete videos[currentVideoId];
-        const videoRenders = Object.values(videos).map((video, idx) => (
+        const sideVideos = Object.assign({}, videos);
+        delete sideVideos[currentVideoId];
+        const videoRenders = Object.values(sideVideos).map((video, idx) => (
             <VideoSideIndexItem key={idx} video={video} handleClick={this.handleClick} />
         ))
         return (

@@ -33,11 +33,11 @@ export const clearCommentErrors = () => ({
 export const requestComments = videoId => dispatch =>
     CommentAPIUtil.fetchComments(videoId).then(comments => dispatch(receiveComments(comments)));
 
-export const requestComment = (commentId) => dispatch =>
+export const requestComment = commentId => dispatch =>
     CommentAPIUtil.fetchComment(commentId).then(comment => dispatch(receiveComment(comment)));
 
-export const createComment = (videoId, newComment) => dispatch =>
-    CommentAPIUtil.createComment(videoId, newComment).then(comment => dispatch(receiveComment(comment)),
+export const createComment = newComment => dispatch =>
+    CommentAPIUtil.createComment(newComment).then(comment => dispatch(receiveComment(comment)),
     errors => dispatch(receiveCommentErrors(errors.responseJSON)));
 
 export const updateComment = (updatedComment) => dispatch =>

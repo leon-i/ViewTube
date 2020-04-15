@@ -9,7 +9,7 @@ const mapStateToProps = ({ session, entities: { users, videos, comments } }) => 
 });
 
 const mapDispatchToProps = dispatch => ({
-    requestComments: (videoId) => dispatch(requestComments(videoId)),
+    requestComments: videoId => dispatch(requestComments(videoId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentIndex);

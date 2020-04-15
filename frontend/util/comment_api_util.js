@@ -12,13 +12,22 @@ export const fetchComment = (commentId) => (
     })
 );
 
-export const createComment = (videoId, comment) => (
+export const createComment = (comment) => (
     $.ajax({
         method: 'POST',
-        url: `api/videos/${videoId}/comments`,
+        url: `api/videos/${comment.commentable_id}/comments`,
         data: { comment }
     })
 );
+
+// export const createComment = (comment) => {
+//     debugger
+//     return $.ajax({
+//         method: 'POST',
+//         url: `api/videos/${data.commentable_id}/comments`,
+//         data: { comment }
+//     })
+// };
 
 export const updateComment = (comment) => (
     $.ajax({

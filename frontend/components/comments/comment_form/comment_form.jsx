@@ -7,13 +7,28 @@ class CommentForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            comment: this.props.comment,
+            author_id: '',
+            commentable_type: '',
+            commentable_id: '',
+            body: '',
             open: false
         }
+
+        this.resetState = this.resetState.bind(this);
         this.handleTextAreaClick = this.handleTextAreaClick.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    resetState() {
+        this.setState({
+            author_id: '',
+            commentable_type: '',
+            commentable_id: '',
+            body: '',
+            open: false
+        })
     }
 
     handleTextAreaClick(e) {
@@ -31,27 +46,28 @@ class CommentForm extends React.Component {
 
     handleChange(field) {
         return (e) => {
-            this.setState({ comment: { [field]: e.target.value } });
+            this.setState({ [field]: e.target.value } );
         }
     }
 
     handleSubmit(e) {
+        e.preventDefault();
         const { currentUser, videoId, formType, createComment } = this.props
-        if (formType === 'comment') {
-            this.setState({
-                comment: {
-                    author_id: currentUser.id,
-                    commentable_id: videoId,
-                    commentable_type: 'Video'
-                }
-            });
 
-            createComment(this.state.comment);
+        if (formType === 'comment') {
+            const comment = Object.assign({}, {
+                author_id: currentUser.id,
+                commentable_id: videoId,
+                commentable_type: 'Video'
+            }, { body: this.state.body });
+
+            createComment(comment);
+            this.resetState();
         }
     }
 
     render() {
-        const { open, comment: { body } } = this.state;
+        const { open, body } = this.state;
         const submitButtonText = this.props.formType === 'comment' ? 'COMMENT' : 'REPLY';
         const submitButtonRender = body.length ? (
             <button className = 'submit-btn' onClick={this.handleSubmit}>{submitButtonText}</button>
@@ -59,32 +75,26 @@ class CommentForm extends React.Component {
             <button className='submit-btn disabled'>{submitButtonText}</button>
         )
         const formRender = open ? (
-            <>
-                <div className='open-form flex'>
-                    <textarea className='comment-area open' cols="30" rows="10"
-                        placeholder='Add a public comment...'
-                        onChange={this.handleChange('body')}
-                        onClick={this.handleTextAreaClick}>
-                    </textarea>
-                    <section className='comment-form-btns flex'>
-                        <button onClick={this.handleCancel}>CANCEL</button>
-                        { submitButtonRender }
-                    </section>
-                </div>
-            </>
+            <section className='comment-form-btns flex'>
+                <button onClick={this.handleCancel}>CANCEL</button>
+                { submitButtonRender }
+            </section>
         ) : (
             <>
-                < textarea className = 'comment-area closed' cols = "30" rows = "10"
-                    placeholder = 'Add a public comment...'
-                    onChange = {this.handleChange('body')}
-                    onClick={this.handleTextAreaClick}>
-                </textarea >
             </>
         );
         return (
             <div className='comment-form-container flex'>
                 <FontAwesomeIcon icon={faUserCircle} />
-                { formRender }
+                <div className='open-form flex'>
+                    <textarea className='comment-area open' cols="30" rows="10"
+                        placeholder='Add a public comment...'
+                        value={body}
+                        onChange={this.handleChange('body')}
+                        onClick={this.handleTextAreaClick}>
+                    </textarea>
+                    {formRender}
+                </div>
             </div>
         )
     }

@@ -7,6 +7,8 @@ class LoginForm extends React.Component {
         super(props);
         this.state = this.props.user;
         this.handleChange = this.handleChange.bind(this);
+        this.handleEnter = this.handleEnter.bind(this);
+        this.handleEnterStep2 = this.handleEnterStep2.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.prevStep = this.prevStep.bind(this);
         this.nextStep = this.nextStep.bind(this);
@@ -15,6 +17,22 @@ class LoginForm extends React.Component {
     handleChange(field) {
         return (e) => {
             this.setState({ [field]: e.target.value })
+        }
+    }
+
+    handleEnter(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            event.stopPropagation();
+            this.nextStep();
+        }
+    }
+
+    handleEnterStep2(e) {
+        if (e.key === 'enter') {
+            e.preventDefault();
+            e.stopPropagation();
+            this.handleSubmit(e);
         }
     }
 
@@ -50,22 +68,24 @@ class LoginForm extends React.Component {
 
         const currentStep = step === 1 ? 
             (<Step1 email={email} 
-                handleChange={this.handleChange} 
+                handleChange={this.handleChange}
+                handleEnter={this.handleEnter}
                 nextStep={this.nextStep}
                 loginError={loginError} />) : 
             (<Step2 email={email} 
                 password={password} 
-                handleChange={this.handleChange} 
+                handleChange={this.handleChange}
+                handleEnter={this.handleEnterStep2}
                 handleSubmit={this.handleSubmit} 
                 prevStep={this.prevStep} 
                 errors = {this.props.errors} />);
 
         return (
-            <div className='session-form'>
+            <form className='session-form'>
                 <section className='form-content login'>
                     { currentStep }
                 </section>
-            </div>
+            </form>
         )
     }
 }

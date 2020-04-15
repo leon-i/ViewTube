@@ -7,8 +7,17 @@ class SignupForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = this.props.user;
+        this.handleEnter = this.handleEnter.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleEnter(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            event.stopPropagation();
+            this.handleSubmit(e);
+        }
     }
 
     handleChange(field) {
@@ -49,12 +58,14 @@ class SignupForm extends React.Component {
 
                     <SignupNames firstName={first_name}
                         lastName={last_name}
+                        handleEnter={this.handleEnter}
                         handleChange={this.handleChange}
                         errors={organizedErrors} />
 
                     <SignupCredentials email={email}
                         username={username}
                         password={password}
+                        handleEnter={this.handleEnter}
                         handleChange={this.handleChange}
                         errors={organizedErrors} />
 

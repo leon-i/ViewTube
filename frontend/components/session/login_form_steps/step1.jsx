@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
-const Step1 = ({ email, handleChange, nextStep, loginError }) => {
+const Step1 = ({ email, handleChange, handleEnter, nextStep, loginError }) => {
     const errorBar = loginError.length ? 'form-error' : '';
     const errorClass = loginError.length ? 'errors flex' : 'no-errors flex';
     return (
@@ -15,7 +15,8 @@ const Step1 = ({ email, handleChange, nextStep, loginError }) => {
             </header>
             <input className={errorBar} type="text" placeholder="Email"
                 value={email}
-                onChange={handleChange('email')} />
+                onChange={handleChange('email')}
+                onKeyDown={handleEnter} />
             <div className={errorClass}>
                 <FontAwesomeIcon icon={faExclamationCircle} />
                 { loginError }

@@ -5,8 +5,7 @@ import CommentForm from './comment_form';
 
 const mapStateToProps = ({ session, entities: { users } }, ownProps) => ({
     currentUser: users[session.currentUserId],
-    videoId: ownProps.match.params.videoId,
-    formType: 'comment'
+    videoId: ownProps.match.params.videoId
 });
 
 const mapDispatchToProps = dispatch => ({

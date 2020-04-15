@@ -1,16 +1,16 @@
-// import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
-// import { requestVideos } from '../../../actions/video_actions';
-// import CommentForm from './video_index';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { createReply } from '../../../actions/comment_actions';
+import ReplyForm from './reply_form';
 
-// const mapStateToProps = ({ session, entities: { users, videos } }, ownProps) => ({
-//     currentUser: users[session.currentUserId],
-//     video: ownProps.video,
-//     formType: 'reply'
-// });
+const mapStateToProps = ({ session, entities: { users } }, ownProps) => ({
+    currentUser: users[session.currentUserId],
+    videoId: ownProps.match.params.videoId,
+    formType: 'reply'
+});
 
-// const mapDispatchToProps = dispatch => ({
-//     createComment: (videoId, comment) => dispatch(requestVideos(videoId, comment)),
-// });
+const mapDispatchToProps = dispatch => ({
+    createReply: (reply) => dispatch(createReply(reply))
+});
 
-// export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommentForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ReplyForm));

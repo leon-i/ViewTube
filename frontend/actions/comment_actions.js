@@ -2,6 +2,7 @@ import * as CommentAPIUtil from '../util/comment_api_util';
 
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
+export const RECEIVE_REPLY = 'RECEIVE_REPLY';
 export const REMOVE_COMMENT = 'DELETE_COMMENT';
 export const RECEIVE_COMMENT_ERRORS = 'RECEIVE_COMMENT_ERRORS';
 export const CLEAR_COMMENT_ERRORS = 'CLEAR_COMMENT_ERRORS';
@@ -13,6 +14,11 @@ const receiveComments = comments => ({
 
 const receiveComment = comment => ({
     type: RECEIVE_COMMENT,
+    comment
+});
+
+const receiveReply = comment => ({
+    type: RECEIVE_REPLY,
     comment
 });
 
@@ -39,6 +45,10 @@ export const requestComment = commentId => dispatch =>
 export const createComment = newComment => dispatch =>
     CommentAPIUtil.createComment(newComment).then(comment => dispatch(receiveComment(comment)),
     errors => dispatch(receiveCommentErrors(errors.responseJSON)));
+
+export const createReply = newReply => dispatch =>
+    CommentAPIUtil.createComment(newReply).then(reply => dispatch(receiveReply(reply)),
+        errors => dispatch(receiveCommentErrors(errors.responseJSON)));
 
 export const updateComment = (updatedComment) => dispatch =>
     CommentAPIUtil.updateComment(updatedComment).then(comment => dispatch(receiveComment(comment)),

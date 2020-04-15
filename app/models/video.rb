@@ -94,4 +94,11 @@ class Video < ApplicationRecord
 
         approved_numbers.join('')
     end
+
+    def total_comments
+        comment_count = 0
+        comment_count += self.comments.length
+        self.comments.each { |comment| comment_count += comment.comments.length }
+        comment_count
+    end
 end

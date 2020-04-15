@@ -52,28 +52,24 @@ class CommentForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const { currentUser, videoId, formType, createComment } = this.props
+        const { currentUser, videoId, createComment } = this.props
 
-        if (formType === 'comment') {
-            const comment = Object.assign({}, {
-                author_id: currentUser.id,
-                commentable_id: videoId,
-                commentable_type: 'Video'
-            }, { body: this.state.body });
+        const comment = Object.assign({}, {
+            author_id: currentUser.id,
+            commentable_id: videoId,
+            commentable_type: 'Video'
+        }, { body: this.state.body });
 
-            createComment(comment);
-            this.resetState();
-        }
+        createComment(comment);
+        this.resetState();
     }
 
     render() {
         const { open, body } = this.state;
-        const commentAreaClass = open ? 'comment-area open' : 'comment-area'
-        const submitButtonText = this.props.formType === 'comment' ? 'COMMENT' : 'REPLY';
         const submitButtonRender = body.length ? (
-            <button className = 'comment-btn' onClick={this.handleSubmit}>{submitButtonText}</button>
+            <button className='comment-btn' onClick={this.handleSubmit}>COMMENT</button>
         ) : (
-            <button className='comment-btn disabled'>{submitButtonText}</button>
+            <button className='comment-btn disabled'>COMMENT</button>
         )
         const formRender = open ? (
             <section className='comment-form-btns flex'>
@@ -87,8 +83,8 @@ class CommentForm extends React.Component {
         return (
             <div className='comment-form-container flex'>
                 <div className='open-form flex'>
-                    <FontAwesomeIcon icon={faUserCircle} />
-                    <textarea className={commentAreaClass} cols="30" rows="10"
+                    <FontAwesomeIcon className='comment-icon' icon={faUserCircle} />
+                    <textarea className='comment-area' cols="30" rows="10"
                         placeholder='Add a public comment...'
                         value={body}
                         onChange={this.handleChange('body')}

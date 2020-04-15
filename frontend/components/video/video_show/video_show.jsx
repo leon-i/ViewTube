@@ -12,7 +12,7 @@ class VideoShow extends React.Component {
 
     componentDidMount() {
         const { requestVideo, match } = this.props;
-        requestVideo(match.params.videoId)
+        requestVideo(match.params.videoId);
     }
 
     render() {
@@ -51,7 +51,8 @@ class VideoShow extends React.Component {
                         </div>
                         <button className='subscribe-btn'>SUBSCRIBE</button>
                     </div>
-                    <CommentIndexContainer currentVideoId={this.props.match.params.videoId} />
+                    <CommentIndexContainer key={video.id} 
+                    currentVideoId={this.props.match.params.videoId} />
                 </section>
                 <section className='show-video-list'>
                     <VideoSideIndexContainer currentVideoId={this.props.match.params.videoId} />

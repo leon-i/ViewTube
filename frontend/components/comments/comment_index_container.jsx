@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import { requestComments } from '../../actions/comment_actions';
 import CommentIndex from './comment_index';
 
-const mapStateToProps = ({ session, entities: { users, videos, comments } }) => ({
+const mapStateToProps = ({ session, entities: { users, videos, comments } }, ownProps) => ({
     currentUser: users[session.currentUserId],
-    currentVideoId: Object.keys(videos)[0],
+    currentVideoId: ownProps.currentVideoId,
+    video: ownProps.video,
     comments
 });
 

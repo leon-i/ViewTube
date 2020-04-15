@@ -1,6 +1,5 @@
 .comment-index {
     width: 100%;
-    /* background: red; */
 }
 
 .comment-header {
@@ -21,11 +20,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-}
-
-.comment-form-container svg {
-    font-size: 40px;
-    margin-right: 16px;
 }
 
 .open-form {
@@ -77,4 +71,114 @@
 .comment-btn {
     background-color: #065fd4;
     color: #fff;
+}
+
+.reply-closed {
+    display: none;
+}
+
+.comment {
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.comment-main {
+    flex-direction: row;
+}
+
+.comment-content {
+    flex-direction: column;
+}
+
+.comment-icon {
+    font-size: 40px;
+    margin-right: 16px;
+}
+
+.comment-info {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.comment-info h4 {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 4px 2px 0;
+    color: #030303;
+}
+
+.comment-info p {
+    font-size: 13px;
+    line-height: 15px;
+    color: #606060;
+}
+
+.comment-body {
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.likes-reply {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.likes-reply p {
+    font-size: 14px;
+    opacity: 0.5;
+    color: #606060;
+}
+
+.likes-reply button {
+    margin-top: 1px;
+}
+
+.reply-btn-transparent {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.007px;
+    padding: 8px 16px;
+    background: transparent;
+    border: none;
+    color: #5f5f5f;
+    cursor: pointer;
+}
+
+.comment-footer {
+    margin-left: 40px;
+}
+
+.show-replies {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+    padding: 2px 0 10px 18px;
+    color: #065fd4;
+    cursor: pointer;
+}
+
+.show-replies svg {
+    font-size: 16px;
+    margin: 0;
+}
+
+.show-replies p {
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.reply-index {
+    margin-left: 20px;
+}
+
+.reply-icon {
+    font-size: 24px;
+    margin-right: 16px;
+}
+
+.reply-area:focus {
+    margin-bottom: 3px;
 }

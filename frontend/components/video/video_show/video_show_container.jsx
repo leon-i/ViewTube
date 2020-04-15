@@ -8,7 +8,7 @@ const mapStateToProps = ({ session, entities: { users, videos } }, ownProps) => 
 });
 
 const mapDispatchToProps = dispatch => ({
-    requestVideo: videoId => dispatch(requestVideo(videoId))
+    requestVideo: videoId => dispatch(requestVideo(videoId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoShow);

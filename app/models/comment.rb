@@ -18,7 +18,7 @@ class Comment < ApplicationRecord
         foreign_key: :author_id,
         class_name: :User
 
-    has_many :replies, as: :commentable
+    has_many :comments, as: :commentable
 
     def time_since_commented
         time_difference = Time.now - Time.parse(self.created_at.to_s)
@@ -41,5 +41,14 @@ class Comment < ApplicationRecord
         else
             'Just now'
         end
+    end
+
+    def parent_comment_author
+        Comment.find(self.commentable_id).author
+    end
+
+    def total_comments_on_video
+        video = Video.find(self.commentable_id)
+        video.total_comments
     end
 end

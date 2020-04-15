@@ -1,0 +1,80 @@
+.comment-index {
+    width: 100%;
+    /* background: red; */
+}
+
+.comment-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 24px 0 32px 0;
+}
+
+.comment-header h1 {
+    font-size: 18px;
+    font-weight: 400px;
+    margin: 0 32px 24px 0;
+    color: #030303;
+}
+
+.comment-form-container {
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.comment-form-container svg {
+    font-size: 40px;
+    margin-right: 16px;
+}
+
+.open-form {
+    width: 100%;
+    flex-direction: row;
+}
+
+.comment-area {
+    width: 100%;
+    height: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 4px;
+    background: transparent;
+    resize: none;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.comment-area:focus {
+    border-bottom: 2px solid hsla(0, 0%, 6.7%, 0.6);
+    margin-bottom: -1px;
+}
+
+.comment-form-btns {
+    flex-direction: row;
+    align-self: flex-end;
+}
+
+.comment-form-btns button {
+    height: 36px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.007px;
+    text-align: center;
+    border-radius: 2px;
+    padding: 0 16px;
+    margin-left: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: transparent;
+    color: #606060;
+}
+
+.comment-btn {
+    background-color: #065fd4;
+    color: #fff;
+}

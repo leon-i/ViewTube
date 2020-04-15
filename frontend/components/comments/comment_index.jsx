@@ -20,8 +20,10 @@ class CommentIndex extends React.Component {
         ))
         return (
             <section className='comment-index'>
-                <h1>{commentAmount} Comments</h1>
+                <section className='comment-header flex'>
+                    <h1>{commentAmount} Comments</h1>
                 <CommentFormContainer />
+                </section>
                 <ul className='comment-list'>
                     {commentLis}
                 </ul>

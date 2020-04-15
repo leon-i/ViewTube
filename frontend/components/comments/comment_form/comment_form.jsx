@@ -68,15 +68,16 @@ class CommentForm extends React.Component {
 
     render() {
         const { open, body } = this.state;
+        const commentAreaClass = open ? 'comment-area open' : 'comment-area'
         const submitButtonText = this.props.formType === 'comment' ? 'COMMENT' : 'REPLY';
         const submitButtonRender = body.length ? (
-            <button className = 'submit-btn' onClick={this.handleSubmit}>{submitButtonText}</button>
+            <button className = 'comment-btn' onClick={this.handleSubmit}>{submitButtonText}</button>
         ) : (
-            <button className='submit-btn disabled'>{submitButtonText}</button>
+            <button className='comment-btn disabled'>{submitButtonText}</button>
         )
         const formRender = open ? (
             <section className='comment-form-btns flex'>
-                <button onClick={this.handleCancel}>CANCEL</button>
+                <button className='cancel-btn'onClick={this.handleCancel}>CANCEL</button>
                 { submitButtonRender }
             </section>
         ) : (
@@ -85,16 +86,16 @@ class CommentForm extends React.Component {
         );
         return (
             <div className='comment-form-container flex'>
-                <FontAwesomeIcon icon={faUserCircle} />
                 <div className='open-form flex'>
-                    <textarea className='comment-area open' cols="30" rows="10"
+                    <FontAwesomeIcon icon={faUserCircle} />
+                    <textarea className={commentAreaClass} cols="30" rows="10"
                         placeholder='Add a public comment...'
                         value={body}
                         onChange={this.handleChange('body')}
                         onClick={this.handleTextAreaClick}>
                     </textarea>
-                    {formRender}
                 </div>
+                {formRender}
             </div>
         )
     }

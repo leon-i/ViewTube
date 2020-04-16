@@ -38,7 +38,7 @@ export const deleteVideo = videoId => (
     })
 );
 
-export const createView = (view) => (
+export const createView = view => (
     $.ajax({
         method: 'POST',
         url: 'api/views',

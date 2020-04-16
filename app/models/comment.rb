@@ -19,6 +19,7 @@ class Comment < ApplicationRecord
         class_name: :User
 
     has_many :comments, as: :commentable
+    has_many :likes, as: :likeable
 
     def time_since_commented
         time_difference = Time.now - Time.parse(self.created_at.to_s)

@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
     }
 
     handleEnterStep2(e) {
-        if (e.key === 'enter') {
+        if (e.key === 'Enter') {
             e.preventDefault();
             e.stopPropagation();
             this.handleSubmit(e);

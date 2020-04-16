@@ -23,7 +23,7 @@ class VideoIndex extends React.Component {
                 createView({video_id: video.id, viewer_id: viewer_id});
                 history.push(`videos/${video.id}`);
             }
-        } 
+        }
     }
 
     render() {

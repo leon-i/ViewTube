@@ -7,35 +7,73 @@ class LikeCounter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            likeCount: this.props.likes.length,
-            dislikeCount: this.props.dislikes.length,
-            likerIds: this.getLikerIds(),
-            dislikerIds: this.getDislikerIds()
+            allLikes: Object.assign({}, this.props.likes, this.props.dislikes),
+            likes: Object.assign({}, this.props.likes),
+            dislikes: Object.assign({}, this.props.dislikes)
         }
-
+        
+        this.decrimentLikes = this.decrimentLikes.bind(this);
+        this.incrimentLikes = this.incrimentLikes.bind(this);
+        this.decrimentLikes = this.decrimentLikes.bind(this);
         this.handleLike = this.handleLike.bind(this);
     }
 
-    getLikerIds() {
-        const { likes } = this.props;
-        const likerIds = likes.map(like => like.liker_id);
-        return likerIds;
+    // getLikerIds() {
+    //     const { likes } = this.props;
+    //     const likerIds = likes.map(like => like.liker_id);
+    //     return likerIds;
+    // }
+
+    // getDislikerIds() {
+    //     const { dislikes } = this.props;
+    //     const dislikerIds = dislikes.map(like => like.liker_id);
+    //     return dislikerIds;
+    // }
+
+    decrimentLikes(id) {
+        const { allLikes, likes, dislikes } = this.state;
+        const newAllLikes = Object.assign({}, allLikes);
+        delete newAllLikes[id];
+
+        const newLikes = Object.assign({}, likes);
+        delete newLikes[id];
+
+        const newDislikes = Object.assign({}, dislikes);
+        delete newDislikes[id];
+
+        this.setState({
+            allLikes: newAllLikes,
+            likes: newLikes,
+            dislikes: newDislikes
+        })
     }
 
-    getDislikerIds() {
-        const { dislikes } = this.props;
-        const dislikerIds = dislikes.map(like => like.liker_id);
-        return dislikerIds;
+    incrimentLikes(like, id) {
+        const { allLikes, likes} = this.state;
+        this.setState({
+            allLikes: Object.assign({}, allLikes, { [id]: like }),
+            likes: Object.assign({}, likes, { [id]: like })
+        });
+    }
+
+    incrimentDislikes(dislike, id) {
+        const { allLikes, dislikes } = this.state;
+        this.setState({
+            allLikes: Object.assign({}, allLikes, { [id]: dislike }),
+            likes: Object.assign({}, dislikes, { [id]: dislike })
+        });
     }
 
     handleLike(likeType) {
         return (e) => {
-            // debugger
-            const { likerIds, dislikerIds } = this.state;
+            const { allLikes } = this.state;
             const { currentUser, likeableType, likeableId } = this.props;
 
-            if (likerIds.includes(currentUser.id) || dislikerIds.includes(currentUser.id)) {
-                LikeAPIUtil.deleteLike(currentUser.id);
+            if (allLikes[currentUser.id]) {
+                const like = allLikes[currentUser.id];
+                debugger
+                LikeAPIUtil.deleteLike(like.id);
+                this.decrimentLikes(currentUser.id);
             }
 
             const dislike = likeType === 'dislike' ? true : false;
@@ -45,13 +83,13 @@ class LikeCounter extends React.Component {
                 likeable_id: likeableId,
                 dislike: dislike
             });
-            // debugger
 
             LikeAPIUtil.createLike(newLike);
+
             dislike ? (
-                this.setState({ dislikerIds: this.state.dislikerIds.concat([currentUser.id]) })
+                this.incrimentLikes(newLike, currentUser.id)
             ) : (
-                this.setState({ likerIds: this.state.dislikerIds.concat([currentUser.id]) })
+                this.incrimentDislikes(newLike, currentUser.id)
             );
         } 
     }
@@ -63,16 +101,16 @@ class LikeCounter extends React.Component {
     }
 
     render() {
-        const { likerIds, dislikerIds } = this.state;
+        const { likes, dislikes } = this.state;
         const { currentUser, likeableType } = this.props;
 
         let likeClass;
         let dislikeClass;
 
-        if (likerIds.includes(currentUser.id)) {
+        if (likes[currentUser.id]) {
             likeClass = 'like-icon liked';
             dislikeClass = 'dislike-icon';
-        } else if (dislikerIds.includes(currentUser.id)) {
+        } else if (dislikes[currentUser.id]) {
             likeClass = 'like-icon';
             dislikeClass = 'dislike-icon disliked';
         } else {
@@ -83,7 +121,7 @@ class LikeCounter extends React.Component {
         const dislikesRender = likeableType === 'Video' ? (
             <>
                 <FontAwesomeIcon onClick={this.handleLike('dislike')} className={dislikeClass} icon={faThumbsDown} />
-                <p>{dislikerIds.length}</p>
+                <p>{Object.keys(dislikes).length}</p>
             </>
         ) : (
             <>
@@ -95,7 +133,7 @@ class LikeCounter extends React.Component {
             <div className='likes-container flex'>
                 <section className='likes flex'>
                     <FontAwesomeIcon onClick={this.handleLike('like')} className={likeClass} icon={faThumbsUp} />
-                    <p>{likerIds.length}</p>
+                    <p>{Object.keys(likes).length}</p>
                 </section>
                 <section className='dislikes flex'>
                     { dislikesRender }

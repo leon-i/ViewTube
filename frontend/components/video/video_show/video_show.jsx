@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import VideoSideIndexContainer from './video_side_index_container';
 import CommentIndexContainer from '../../comments/comment_index_container';
-// import LikeCounter from '../../likes/like_counter';
+import LikeCounter from '../../likes/like_counter';
 
 class VideoShow extends React.Component {
     constructor(props) {
@@ -32,12 +32,12 @@ class VideoShow extends React.Component {
                             <p>{`${video.views} views • ${video.uploadDate}`}</p>
                         </section>
                         <section className='show-details-right'>
-                            <p>Likes placeholder</p>
-                            {/* <LikeCounter likes={video.likes}
+                            {/* <p>Likes placeholder</p> */}
+                            <LikeCounter likes={video.likes}
                             dislikes={video.dislikes}
                             currentUser={currentUser}
                             likeableType='Video'
-                            likeableId={video.id} /> */}
+                            likeableId={video.id} />
                         </section>
                     </div>
                     <div className='show-details-bottom-container flex'>

@@ -62,11 +62,12 @@
 }
 
 .user-profile-video-index {
-    padding: 0 80px;
+    padding: 0 50px 0 80px;
 }
 
 .uploads-container {
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .uploads-container .video-index-thumbnail {

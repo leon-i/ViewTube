@@ -75,7 +75,8 @@
 }
 
 .profile-video-container {
-    width: 210px;
+    width: calc(100% / 5.1);
+    min-width: 205px;
     margin: 0 4px 24px 0;
 }
 

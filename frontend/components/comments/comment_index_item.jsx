@@ -56,7 +56,7 @@ class CommentIndexItem extends React.Component  {
     }
 
     handleReplyClose() {
-        this.setState({ repliesOpen: true, replyFormOpen: false });
+        this.setState({ replyFormOpen: false, repliesOpen: true });
     }
 
     render() {
@@ -87,8 +87,8 @@ class CommentIndexItem extends React.Component  {
             <>
             </>
         );
-
-        const repliesRender = repliesOpen ? (
+        
+        const repliesRender = repliesOpen && comment.replies ? (
             <ReplyIndex key={comment.replies.length} replies={comment.replies} />
         ) : (
             <>

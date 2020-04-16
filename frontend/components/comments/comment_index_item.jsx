@@ -56,7 +56,7 @@ class CommentIndexItem extends React.Component  {
     }
 
     handleReplyClose() {
-        this.setState({ replyFormOpen: false });
+        this.setState({ repliesOpen: true, replyFormOpen: false });
     }
 
     render() {

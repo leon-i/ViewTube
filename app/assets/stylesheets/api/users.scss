@@ -1,3 +1,96 @@
 // Place all the styles related to the api/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-profile-content {
+    flex-direction: column;
+    position: absolute;
+    top: 55px;
+    left: 240px;
+    height: 100%;
+    width: calc(100% - 250px);
+    background: #f1f1f1;
+}
+
+.user-profile-header {
+    flex-direction: column;
+    width: 100%;
+    padding: 16px 107px 4px;
+    background-color: #f9f9f9;
+}
+
+.user-profile-header svg {
+    font-size: 80px;
+    margin-right: 24px;
+}
+
+.user-profile-header h1 {
+    font-size: 30px;
+    margin-top: 8px;
+}
+
+.user-profile-header p {
+    font-size: 16px;
+    color: #606060;
+    margin-top: 5px;
+}
+
+.profile-nav {
+    width: 100%;
+    height: 47px;
+}
+
+.profile-nav h2 {
+    font-size: 15px;
+    font-weight: bold;
+    max-width: 56px;
+    border-bottom: 4px solid #030303;
+    padding: 18px 32px 14px 32px;
+    color: #030303;
+}
+
+.user-profile-video-index-header {
+    flex-direction: row;
+    align-items: center;
+    height: 56px;
+    margin: 8px 0 8px;
+}
+
+.user-profile-video-index-header h2 {
+    font-size: 18px;
+    color: #111111;
+}
+
+.user-profile-video-index {
+    padding: 0 80px;
+}
+
+.uploads-container {
+    flex-direction: row;
+}
+
+.uploads-container .video-index-thumbnail {
+    height: 117px;
+    width: 100%;
+}
+
+.profile-video-container {
+    width: 210px;
+    margin: 0 4px 24px 0;
+}
+
+.profile-detail-text {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile-detail-text h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.profile-detail-text p {
+    font-size: 14px;
+    color: #606060;
+}

@@ -91,11 +91,11 @@ class LoginForm extends React.Component {
                 errors = {this.props.errors} />);
 
         return (
-            <form className='session-form'>
+            <div className='session-form'>
                 <section className='form-content login'>
                     { currentStep }
                 </section>
-            </form>
+            </div>
         )
     }
 }

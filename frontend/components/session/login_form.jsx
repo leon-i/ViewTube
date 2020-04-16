@@ -9,6 +9,7 @@ class LoginForm extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleEnter = this.handleEnter.bind(this);
         this.handleEnterStep2 = this.handleEnterStep2.bind(this);
+        this.handleDemoLogin = this.handleDemoLogin.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.prevStep = this.prevStep.bind(this);
         this.nextStep = this.nextStep.bind(this);
@@ -34,6 +35,14 @@ class LoginForm extends React.Component {
             e.stopPropagation();
             this.handleSubmit(e);
         }
+    }
+
+    handleDemoLogin(e) {
+        e.preventDefault();
+        this.props.login({
+            email: 'demouser@email.com',
+            password: 'password'
+        })
     }
 
     handleSubmit(e) {
@@ -70,6 +79,7 @@ class LoginForm extends React.Component {
             (<Step1 email={email} 
                 handleChange={this.handleChange}
                 handleEnter={this.handleEnter}
+                handleDemoLogin={this.handleDemoLogin}
                 nextStep={this.nextStep}
                 loginError={loginError} />) : 
             (<Step2 email={email} 

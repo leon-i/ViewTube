@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
-const Step1 = ({ email, handleChange, handleEnter, nextStep, loginError }) => {
+const Step1 = ({ email, handleChange, handleEnter, handleDemoLogin, nextStep, loginError }) => {
     const errorBar = loginError.length ? 'form-error' : '';
     const errorClass = loginError.length ? 'errors flex' : 'no-errors flex';
     return (
@@ -21,6 +21,10 @@ const Step1 = ({ email, handleChange, handleEnter, nextStep, loginError }) => {
                 <FontAwesomeIcon icon={faExclamationCircle} />
                 { loginError }
             </div>
+            <section className='demo-login flex'>
+                <p>Too lazy? Use Demo mode to sign in instantly.</p>
+                <h5 onClick={handleDemoLogin}>Demo login</h5>
+            </section>
             <section className="form-bottom flex">
                 <Link to='/signup'>Create account</Link>
                 <button onClick={nextStep}>Next</button>

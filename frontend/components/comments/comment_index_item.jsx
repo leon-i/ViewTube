@@ -5,35 +5,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
-// const CommentIndexItem = ({ comment }) => {
-//     const replyLength = comment.replies.length;
-//     const hasReplies = replyLength? true : false;
-//     const replyMessage = replyLength === 1 ? 'View reply' : `View ${replyLength} replies`;
-//     const viewReples = hasReplies ? (
-//         <p>{replyMessage}</p>
-//         ) : (
-//         <>
-//         </>
-//     )
-//     return (
-//         <li className='comment flex'>
-//             <section className='comment-main flex'>
-//                 <FontAwesomeIcon icon={faUserCircle} />
-//                 <div className='comment-content flex'>
-//                     <div className='comment-info flex'>
-//                         <h4>{comment.author.username}</h4>
-//                         <p>{comment.timeSinceCommented}</p>
-//                     </div>
-//                     <p className='comment-body'>{comment.body}</p>
-//                 </div>
-//             </section>
-//             <section className='comment-footer'>
-//                 <button className='reply-btn-transparent'>REPLY</button>
-//             </section>
-//         </li>
-//     )
-// }
-
 class CommentIndexItem extends React.Component  {
     constructor(props) {
         super(props);

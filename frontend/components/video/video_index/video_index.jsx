@@ -56,8 +56,8 @@ class VideoIndex extends React.Component {
                     </div>
             </div>
         ));
-        const recommendedVideos = this.shuffleVideos(videoRenders.slice(0, 8));
-        const rest = this.shuffleVideos(videoRenders.slice(8));
+        const recommendedVideos = videoRenders.slice(0, 8);
+        const rest = videoRenders.slice(8);
         const restRender = rest.length ? (
             <>
                 <section className='video-index flex'>

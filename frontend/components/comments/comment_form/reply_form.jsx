@@ -45,7 +45,7 @@ class ReplyForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const { currentUser, comment, createReply, closeForm } = this.props;
+        const { currentUser, comment, createReply, closeForm, openReplies } = this.props;
 
         if (comment.commentable_type !== 'Comment') {
             const reply = Object.assign({}, {
@@ -56,6 +56,7 @@ class ReplyForm extends React.Component {
 
             createReply(reply);
             closeForm();
+            openReplies();
             this.resetState();
         } else {
             const reply = Object.assign({}, {
@@ -66,6 +67,7 @@ class ReplyForm extends React.Component {
 
             createReply(reply);
             closeForm();
+            openReplies();
             this.resetState();
         }
     }

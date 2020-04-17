@@ -14,8 +14,13 @@ class CommentIndexItem extends React.Component  {
         }
 
         this.handleViewReplies = this.handleViewReplies.bind(this);
+        this.openReplies = this.openReplies.bind(this);
         this.handleReply = this.handleReply.bind(this);
         this.handleReplyClose = this.handleReplyClose.bind(this);
+    }
+
+    openReplies() {
+        this.setState({ repliesOpen: true });
     }
 
     handleViewReplies(e) {
@@ -27,7 +32,7 @@ class CommentIndexItem extends React.Component  {
     }
 
     handleReplyClose() {
-        this.setState({ replyFormOpen: false, repliesOpen: true });
+        this.setState({ replyFormOpen: false });
     }
 
     render() {
@@ -68,7 +73,9 @@ class CommentIndexItem extends React.Component  {
 
         const replyFormRender = replyFormOpen ? (
             <div className='outer-reply-form'>
-                <ReplyFormContainer comment={comment} closeForm={this.handleReplyClose} />
+                <ReplyFormContainer comment={comment} 
+                closeForm={this.handleReplyClose}
+                openReplies={this.openReplies} />
             </div>
         ) : (
             <>

@@ -99,6 +99,8 @@
     color: #030303;
 }
 
-.rest {
+.index-divider {
+    width: calc(100% - 45px);
     border-top: 4px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
 }

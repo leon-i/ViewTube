@@ -98,3 +98,7 @@
 .detail-text a:hover {
     color: #030303;
 }
+
+.rest {
+    border-top: 4px solid rgba(0, 0, 0, 0.1);
+}

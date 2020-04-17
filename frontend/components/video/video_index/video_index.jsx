@@ -14,6 +14,15 @@ class VideoIndex extends React.Component {
         this.props.requestVideos();
     }
 
+    shuffleVideos(videos) {
+        for (let i = videos.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [videos[i], videos[j]] = [videos[j], videos[i]];
+        }
+
+        return videos;
+    }
+
     handleVideoClick(video) {
         return (e) => {
             const className = e.target.className;
@@ -28,7 +37,6 @@ class VideoIndex extends React.Component {
 
     render() {
         const videos = Object.values(this.props.videos);
-        // const recommendedVideos = videos.slice(0, 8);
         if (!videos) return null;
         const videoRenders = videos.map((video, idx) => (
             <div key={idx} className='video-container' onClick={this.handleVideoClick(video)}>
@@ -47,13 +55,25 @@ class VideoIndex extends React.Component {
                         </div>
                     </div>
             </div>
-        ))
+        ));
+        const recommendedVideos = this.shuffleVideos(videoRenders.slice(0, 8));
+        const rest = this.shuffleVideos(videoRenders.slice(8));
+        const restRender = rest.length ? (
+            <section className='video-index rest flex'>
+                {rest}
+            </section>
+        ) : (
+            <>
+            </>
+        );
+
         return (
             <div className='video-index-container flex'>
                 <h1 className='row-title'>Recommended</h1>
                 <section className='video-index flex'>
-                            { videoRenders }
+                            { recommendedVideos }
                 </section>
+                {restRender}
             </div>
         )
     }

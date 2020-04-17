@@ -1,6 +1,6 @@
 .sidenav-open {
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 55px;
     bottom: 0;
     left: 0;
@@ -64,7 +64,7 @@
 }
 
 .sidenav-closed {
-    position: absolute;
+    position: fixed;
     top: 55px;
     bottom: 0;
     left: 0;

@@ -1,4 +1,4 @@
-import { RECEIVE_VIDEOS, RECEIVE_VIDEO, REMOVE_VIDEO } from '../actions/video_actions';
+import { RECEIVE_VIDEOS, RECEIVE_VIDEO, REMOVE_VIDEO, CLEAR_VIDEOS } from '../actions/video_actions';
 
 export default (state = {}, action) => {
     Object.freeze(state);
@@ -11,6 +11,8 @@ export default (state = {}, action) => {
             const newState = Object.assign({}, state);
             delete newState[action.videoId];
             return newState;
+        case CLEAR_VIDEOS:
+            return {};
         default:
             return state;
     }

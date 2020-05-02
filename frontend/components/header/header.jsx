@@ -14,7 +14,7 @@ class Header extends React.Component {
         this._loginClick = this._loginClick.bind(this);
         this.handleEnter = this.handleEnter.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
-        this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
+        this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     }
 
     _loginClick(e) {
@@ -43,7 +43,7 @@ class Header extends React.Component {
         history.push(`/results?search_query=${searchUrl}`);
     }
 
-    render(){
+    render() {
         const { currentUser, handleSideNavClick, logout, openModal, history } = this.props;
         const rightRender = currentUser ? (
                 <DropdownMenu currentUser={currentUser} logout={() => logout().then(history.push('/'))} />

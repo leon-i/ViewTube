@@ -26,8 +26,8 @@ const Step2 = ({ email, password, handleChange, handleEnter, handleSubmit, prevS
                 { errors }
             </div>
             <section className="form-bottom flex">
-                <button type='button' onClick={prevStep}>Prev</button>
-                <button type='submit' onClick={handleSubmit}>Log In</button>
+                <button onClick={prevStep}>Prev</button>
+                <button onClick={handleSubmit}>Log In</button>
             </section>
         </>
     )

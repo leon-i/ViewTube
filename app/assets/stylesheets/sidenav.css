@@ -1,9 +1,10 @@
 .sidenav-open {
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 55px;
     bottom: 0;
     left: 0;
+    height: 100%;
     width: 240px;
     background-color: #fff;
 }
@@ -63,10 +64,11 @@
 }
 
 .sidenav-closed {
-    position: absolute;
+    position: fixed;
     top: 55px;
     bottom: 0;
     left: 0;
+    height: 100%;
     width: 72px;
     background-color: #fff;
     color: #030303;

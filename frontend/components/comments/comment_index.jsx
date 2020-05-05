@@ -21,8 +21,7 @@ class CommentIndex extends React.Component {
         comments.forEach(comment => commentCount += comment.replyCount);
         const commentLis = comments.map((comment, idx) => (
             <CommentIndexItem key={idx} comment={comment} 
-            currentUser={this.props.currentUser}
-            handleCommentAddition={this.props.handleCommentAddition} />
+            currentUser={this.props.currentUser} />
         ));
         
         return (

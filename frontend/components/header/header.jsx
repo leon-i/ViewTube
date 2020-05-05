@@ -8,14 +8,42 @@ import DropdownMenu from './dropdown_menu/dropdown_menu';
 class Header extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            searchQuery: ''
+        }
         this._loginClick = this._loginClick.bind(this);
+        this.handleEnter = this.handleEnter.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
+        this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     }
 
     _loginClick(e) {
         this.props.history.push('/login');
     }
 
-    render(){
+    handleEnter(e) {
+        if (e.key === 'Enter') {
+            this.handleSearchSubmit(e);
+        }
+    }
+
+    handleSearch(e) {
+        this.setState({
+            searchQuery: e.target.value
+        })
+    }
+
+    handleSearchSubmit(e) {
+        e.preventDefault();
+        const { history, clearVideos } = this.props;
+        const { searchQuery } = this.state;
+        const searchUrl = searchQuery.split(' ').join('+');
+
+        clearVideos();
+        history.push(`/results?search_query=${searchUrl}`);
+    }
+
+    render() {
         const { currentUser, handleSideNavClick, logout, openModal, history } = this.props;
         const rightRender = currentUser ? (
                 <DropdownMenu currentUser={currentUser} logout={() => logout().then(history.push('/'))} />
@@ -34,7 +62,10 @@ class Header extends React.Component {
                 </section>
                 
                 <section className='center'>
-                    <SearchBar />
+                    <SearchBar searchQuery={this.state.searchQuery}
+                        handleEnter={this.handleEnter}
+                        handleSearch={this.handleSearch}
+                        handleSearchSubmit={this.handleSearchSubmit} />
                 </section>
 
                 <section className='right flex'>

@@ -36,6 +36,15 @@ class Api::VideosController < ApplicationController
         end
     end
 
+    def search
+        query = params[:query]
+        @videos = Video.with_attached_thumbnail
+            .with_attached_video
+            .joins(:uploader)
+            .where("title ILIKE ? OR username ILIKE ?", "%#{query}%", "%#{query}%")
+        render :index
+    end
+
     private
 
     def video_params

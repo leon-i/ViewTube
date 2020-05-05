@@ -19,7 +19,6 @@ class VideoShow extends React.Component {
     render() {
         const { video, currentUser } = this.props;
         if (!video) return null;
-        debugger
         return (
             <div className='video-show flex'>
                 <section className='show-main'>

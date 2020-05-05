@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :videos, only: [:index, :show, :create, :update, :destroy] do
       resources :comments, only: [:index, :create]
     end
+    get :search, controller: :videos
     resources :comments, only: [:update, :destroy]
     resources :likes, only: [:create, :destroy]
     resources :views, only: [:create]

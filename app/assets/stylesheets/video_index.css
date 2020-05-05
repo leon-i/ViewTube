@@ -98,3 +98,9 @@
 .detail-text a:hover {
     color: #030303;
 }
+
+.index-divider {
+    width: calc(100% - 25px);
+    border-top: 4px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}

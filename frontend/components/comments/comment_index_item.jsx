@@ -5,35 +5,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
-// const CommentIndexItem = ({ comment }) => {
-//     const replyLength = comment.replies.length;
-//     const hasReplies = replyLength? true : false;
-//     const replyMessage = replyLength === 1 ? 'View reply' : `View ${replyLength} replies`;
-//     const viewReples = hasReplies ? (
-//         <p>{replyMessage}</p>
-//         ) : (
-//         <>
-//         </>
-//     )
-//     return (
-//         <li className='comment flex'>
-//             <section className='comment-main flex'>
-//                 <FontAwesomeIcon icon={faUserCircle} />
-//                 <div className='comment-content flex'>
-//                     <div className='comment-info flex'>
-//                         <h4>{comment.author.username}</h4>
-//                         <p>{comment.timeSinceCommented}</p>
-//                     </div>
-//                     <p className='comment-body'>{comment.body}</p>
-//                 </div>
-//             </section>
-//             <section className='comment-footer'>
-//                 <button className='reply-btn-transparent'>REPLY</button>
-//             </section>
-//         </li>
-//     )
-// }
-
 class CommentIndexItem extends React.Component  {
     constructor(props) {
         super(props);
@@ -43,8 +14,13 @@ class CommentIndexItem extends React.Component  {
         }
 
         this.handleViewReplies = this.handleViewReplies.bind(this);
+        this.openReplies = this.openReplies.bind(this);
         this.handleReply = this.handleReply.bind(this);
         this.handleReplyClose = this.handleReplyClose.bind(this);
+    }
+
+    openReplies() {
+        this.setState({ repliesOpen: true });
     }
 
     handleViewReplies(e) {
@@ -87,8 +63,8 @@ class CommentIndexItem extends React.Component  {
             <>
             </>
         );
-
-        const repliesRender = repliesOpen ? (
+        
+        const repliesRender = repliesOpen && comment.replies ? (
             <ReplyIndex key={comment.replies.length} replies={comment.replies} />
         ) : (
             <>
@@ -97,7 +73,9 @@ class CommentIndexItem extends React.Component  {
 
         const replyFormRender = replyFormOpen ? (
             <div className='outer-reply-form'>
-                <ReplyFormContainer comment={comment} closeForm={this.handleReplyClose} />
+                <ReplyFormContainer comment={comment} 
+                closeForm={this.handleReplyClose}
+                openReplies={this.openReplies} />
             </div>
         ) : (
             <>

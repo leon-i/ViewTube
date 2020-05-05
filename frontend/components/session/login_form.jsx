@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
     }
 
     handleEnterStep2(e) {
-        if (e.key === 'enter') {
+        if (e.key === 'Enter') {
             e.preventDefault();
             e.stopPropagation();
             this.handleSubmit(e);
@@ -91,11 +91,11 @@ class LoginForm extends React.Component {
                 errors = {this.props.errors} />);
 
         return (
-            <form className='session-form'>
+            <div className='session-form'>
                 <section className='form-content login'>
                     { currentStep }
                 </section>
-            </form>
+            </div>
         )
     }
 }

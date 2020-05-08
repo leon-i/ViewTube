@@ -17,7 +17,7 @@ class VideoShow extends React.Component {
     }
 
     render() {
-        const { video, currentUser } = this.props;
+        const { video, currentUser, videoLikes, videoDislikes } = this.props;
         if (!video) return null;
         return (
             <div className='video-show flex'>
@@ -32,8 +32,8 @@ class VideoShow extends React.Component {
                         </section>
                         <section className='show-details-right'>
                             {/* <p>Likes placeholder</p> */}
-                            <LikeCounter likes={video.likes}
-                            dislikes={video.dislikes}
+                            <LikeCounter likes={videoLikes}
+                            dislikes={videoDislikes}
                             currentUser={currentUser}
                             likeableType='Video'
                             likeableId={video.id} />

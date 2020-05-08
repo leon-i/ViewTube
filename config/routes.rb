@@ -6,10 +6,12 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show]
     resources :videos, only: [:index, :show, :create, :update, :destroy] do
       resources :comments, only: [:index, :create]
+      resources :likes, only: [:create, :destroy]
     end
     get :search, controller: :videos
-    resources :comments, only: [:update, :destroy]
-    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:update, :destroy] do
+      resources :likes, only: [:create, :destroy]
+    end
     resources :views, only: [:create]
     resource :session, only: [:create, :destroy]
   end

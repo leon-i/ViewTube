@@ -4,7 +4,11 @@
     <title>Viewtube</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta property='og:title' content='ViewTube' />
+    <meta property='og:type' content='website' />
+    <meta property='og:url' content='https://viewtubeapp.herokuapp.com/#/' />
     <meta property='og:image' content="<%= image_url('rsz_splash.png') %>" />
+    <meta property='og:description' content='ViewTube is a fullstack YouTube clone made with React, Redux, and Ruby on Rails.' />
     <%= favicon_link_tag asset_path('favicon.ico') %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>

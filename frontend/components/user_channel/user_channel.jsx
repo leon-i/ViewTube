@@ -3,20 +3,14 @@ import { Link } from 'react-router-dom';
 import { createView } from '../../util/video_api_util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import SideNavOpen from '../sidenav/sidenav_open';
-import SideNavClosed from '../sidenav/sidenav_closed';
+import SideNav from '../sidenav/sidenav';
 
 class UserChannel extends React.Component {
     constructor(props) {
         super(props);
-        this._loginClick = this._loginClick.bind(this);
     }
     componentDidMount() {
         this.props.requestVideos();
-    }
-
-    _loginClick(e) {
-        this.props.history.push('/login');
     }
 
     handleVideoClick(video) {
@@ -27,12 +21,6 @@ class UserChannel extends React.Component {
     }
 
     render() {
-        const { currentUser, sideNavOpen } = this.props;
-        const sidenav = sideNavOpen ? (
-            <SideNavOpen currentUser={currentUser} login={this._loginClick} />
-        ) : (
-                <SideNavClosed />
-            );
         const { userProfileId, videos } = this.props;
         const videoArr = Object.values(videos);
         const profileVideos = videoArr.filter(video => video.uploader_id === parseInt(userProfileId));
@@ -56,7 +44,7 @@ class UserChannel extends React.Component {
 
         return (
             <>
-                {sidenav}
+                <SideNav />
                 <section className='user-profile-content'>
                     <header className='user-profile-header flex'>
                         <section className='upper-profile-header flex'>

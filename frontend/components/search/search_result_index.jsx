@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchIndexItem from './search_index_item';
-import SideNavOpen from '../sidenav/sidenav_open';
-import SideNavClosed from '../sidenav/sidenav_closed';
+import SideNav from '../sidenav/sidenav';
 
 class SearchResultIndex extends React.Component {
     constructor(props) {
@@ -32,21 +31,16 @@ class SearchResultIndex extends React.Component {
     }
 
     render() {
-        const { currentUser, sideNavOpen, videos } = this.props;
+        const { sideNav, videos } = this.props;
         const results = Object.values(videos);
-        const searchIndexClass = sideNavOpen ? 'search-index pushed-right' : 'search-index pushed-left';
+        const searchIndexClass = sideNav ? 'search-index pushed-right' : 'search-index pushed-left';
         const thumbnails = results.map((video, idx) => (
             <SearchIndexItem key={idx} video={video} />
         ));
 
-        const sidenav = sideNavOpen ? (
-            <SideNavOpen currentUser={currentUser} login={this._loginClick} />
-        ) : (
-                <SideNavClosed />
-        );
         return (
             <>
-            { sidenav }
+            <SideNav />
             <div className={searchIndexClass}>
                 { thumbnails }
             </div>

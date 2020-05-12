@@ -6,9 +6,9 @@ import SideNavClosed from './sidenav_closed';
 
 const SideNav = ({ currentUser, sideNav, history }) => {
     if (!sideNav) {
-        return <SideNavClosed />
+        return <SideNavClosed history={history} />
     } else {
-        return <SideNavOpen currentUser={currentUser} login={() => history.push('/login')} />
+        return <SideNavOpen currentUser={currentUser} login={() => history.push('/login')} history={history} />
     }
 }
 

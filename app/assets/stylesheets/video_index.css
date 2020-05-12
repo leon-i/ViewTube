@@ -1,6 +1,15 @@
 .video-index-container {
     flex-direction: column;
     position: absolute;
+}
+
+.full-width {
+    top: 55px;
+    left: 70px;
+    width: calc(100% - 60px);
+}
+
+.partial-width {
     top: 55px;
     left: 240px;
     width: calc(100% - 250px);

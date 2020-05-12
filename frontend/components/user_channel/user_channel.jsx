@@ -10,23 +10,24 @@ class UserChannel extends React.Component {
         super(props);
     }
     componentDidMount() {
-        this.props.requestVideos();
+        const { userProfileId, requestUser, clearVideos } = this.props
+        clearVideos();
+        requestUser(userProfileId);
     }
 
     handleVideoClick(video) {
         return (e) => {
+            const { currentUser } = this.props;
             const viewer_id = currentUser ? currentUser.id : null;
             createView({ video_id: video.id, viewer_id: viewer_id });
         }
     }
 
     render() {
-        const { userProfileId, videos } = this.props;
-        const videoArr = Object.values(videos);
-        const profileVideos = videoArr.filter(video => video.uploader_id === parseInt(userProfileId));
-        if (!profileVideos.length) return null;
-        const uploader = profileVideos.length ? profileVideos[0].uploader : '';
-        const videoRenders = profileVideos.map((video, idx) => (
+        const { userProfile, videos, sideNav } = this.props;
+        if (!userProfile) return null;
+        const profileSectionClass = sideNav ? 'user-profile-content partial-width' : 'user-profile-content full-width';
+        const videoRenders = Object.values(videos).map((video, idx) => (
             <div key={idx} className='profile-video-container' onClick={this.handleVideoClick(video)}>
                 <Link to={`/videos/${video.id}`}>
                     <div className='video-index-thumbnail'>
@@ -45,12 +46,12 @@ class UserChannel extends React.Component {
         return (
             <>
                 <SideNav />
-                <section className='user-profile-content'>
+                <section className={profileSectionClass}>
                     <header className='user-profile-header flex'>
                         <section className='upper-profile-header flex'>
                             <FontAwesomeIcon icon={faUserCircle} />
                             <div className='user-profile-details'>
-                                <h1>{uploader.username}</h1>
+                                <h1>{userProfile.username}</h1>
                                 <p>22 subscribers</p>
                             </div>
                         </section>

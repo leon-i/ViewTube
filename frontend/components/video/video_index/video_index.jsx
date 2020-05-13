@@ -60,7 +60,22 @@ class VideoIndex extends React.Component {
             </div>
         ));
         const recommendedVideos = videoRenders.slice(0, 8);
+        let spacerKey = 0;
+        while (recommendedVideos.length % 4 !== 0) {
+            recommendedVideos.push(
+                <div key={`spacer-${spacerKey}`} className='video-spacer video-container'></div>
+            );
+            spacerKey++;
+        }
         const rest = videoRenders.slice(8);
+        if (rest.length) {
+            while (rest.length % 4 !== 0) {
+                rest.push(
+                    <div key={`spacer-${spacerKey}`} className='video-spacer video-container'></div>
+                )
+            }
+            spacerKey++;
+        }
         const restRender = rest.length ? (
             <>
                 <section className='video-index flex'>

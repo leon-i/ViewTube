@@ -6,7 +6,7 @@
 .full-width {
     top: 55px;
     left: 70px;
-    width: calc(100% - 60px);
+    width: calc(100% - 72px);
 }
 
 .partial-width {
@@ -27,14 +27,14 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 24px;
+    margin: 0 16px 0 24px;
 }
 
 .video-container {
-    margin: 0 16px 40px 0;
+    margin: 0 8px 40px 8px;
     min-width: 245px;
     max-width: 320px;
-    flex: 1 1 10%;
+    flex: 1 1 20%;
 }
 
 .video-details {
@@ -71,6 +71,8 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
+    object-fit: cover;
+    object-position: 50% 30%;
 }
 
 .video-details {
@@ -117,7 +119,7 @@
 }
 
 .index-divider {
-    width: calc(100% - 25px);
+    width: calc(100% - 10px);
     border-top: 4px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 40px;
 }

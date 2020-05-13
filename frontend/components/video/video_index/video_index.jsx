@@ -11,6 +11,7 @@ class VideoIndex extends React.Component {
     }
 
     componentDidMount() {
+        this.props.clearVideos();
         this.props.requestVideos();
     }
 
@@ -36,9 +37,11 @@ class VideoIndex extends React.Component {
     }
 
     render() {
-        const videos = Object.values(this.props.videos);
+        const { videos, sideNav } = this.props;
+        const allVideos = Object.values(videos);
         if (!videos) return null;
-        const videoRenders = videos.map((video, idx) => (
+        const videoIndexWidth = sideNav ? 'partial-width' : 'full-width';
+        const videoRenders = allVideos.map((video, idx) => (
             <div key={idx} className='video-container' onClick={this.handleVideoClick(video)}>
                 <div className='video-index-thumbnail'>
                     <img src={video.thumbnailUrl} alt="video-thumbnail"/>
@@ -49,7 +52,7 @@ class VideoIndex extends React.Component {
                         </Link>
                         <div className='detail-text flex'>
                             <h4>{video.title}</h4>
-                            <Link to={`/users/${video.uploader.id}`} 
+                            <Link to={`/users/${video.uploader.id}`}
                                 className='username'>{video.uploader.username}</Link>
                             <p>{`${video.shorthandViews} • ${video.timeSinceUpload}`}</p>
                         </div>
@@ -57,7 +60,22 @@ class VideoIndex extends React.Component {
             </div>
         ));
         const recommendedVideos = videoRenders.slice(0, 8);
+        let spacerKey = 0;
+        while (recommendedVideos.length % 4 !== 0) {
+            recommendedVideos.push(
+                <div key={`spacer-${spacerKey}`} className='video-spacer video-container'></div>
+            );
+            spacerKey++;
+        }
         const rest = videoRenders.slice(8);
+        if (rest.length) {
+            while (rest.length % 4 !== 0) {
+                rest.push(
+                    <div key={`spacer-${spacerKey}`} className='video-spacer video-container'></div>
+                )
+            }
+            spacerKey++;
+        }
         const restRender = rest.length ? (
             <>
                 <section className='video-index flex'>
@@ -71,7 +89,7 @@ class VideoIndex extends React.Component {
         );
 
         return (
-            <div className='video-index-container flex'>
+            <div className={`video-index-container flex ${videoIndexWidth}`}>
                 <h1 className='row-title'>Recommended</h1>
                 <section className='video-index flex'>
                     { recommendedVideos }

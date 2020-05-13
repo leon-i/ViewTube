@@ -41,15 +41,27 @@ class Video < ApplicationRecord
 
     def format_views
         views = self.views.length
-        return '0 views' if views == 0
+        return '0 views' if views === 0
         
-        digit_arr = views.to_s.split('');
+        digit_arr = views.to_s.split('')
         displayed_digits = handle_first_three_digits(digit_arr[0..2])
 
-        if views > 1000000
+        if views >= 10000000
+            displayed_digits = displayed_digits[2].to_i === 0 ? displayed_digits[0..1] : "#{displayed_digits[0..1]}.#{displayed_digits[2]}"
             "#{displayed_digits}M views"
-        elsif views > 100
+        elsif views >= 1000000
+            displayed_digits = displayed_digits[1].to_i === 0 ? displayed_digits[0] : "#{displayed_digits[0]}.#{displayed_digits[1]}"
+            "#{displayed_digits}M views"
+        elsif views >= 100000
             "#{displayed_digits}K views"
+        elsif views >= 10000
+            displayed_digits = displayed_digits[2].to_i === 0 ? displayed_digits[0..1] : "#{displayed_digits[0..1]}.#{displayed_digits[2]}"
+            "#{displayed_digits}K views"
+        elsif views >= 1000
+            displayed_digits = displayed_digits[1].to_i === 0 ? displayed_digits[0] : "#{displayed_digits[0]}.#{displayed_digits[1]}"
+            "#{displayed_digits}K views"
+        elsif views > 1
+            "#{views} views"
         elsif views === 1
             '1 view'
         else
@@ -61,6 +73,7 @@ class Video < ApplicationRecord
         time_difference = Time.now - Time.parse(self.created_at.to_s)
         years_since = (time_difference / 1.year).to_i
         months_since = (time_difference / 1.month).to_i
+        weeks_since = (time_difference / 1.week).to_i
         days_since = (time_difference / 1.day).to_i
         hours_since = (time_difference / 1.hour).to_i
         minutes_since = (time_difference / 1.minute).to_i
@@ -69,6 +82,8 @@ class Video < ApplicationRecord
             years_since === 1 ? "1 year ago" : "#{years_since} years ago"
         elsif months_since >= 1
             months_since === 1 ? "1 month ago" : "#{months_since} months ago"
+        elsif weeks_since >= 1
+            weeks_since === 1 ? "1 week ago" : "#{weeks_since} weeks ago"
         elsif days_since >= 1
             days_since === 1 ? "1 day ago" : "#{days_since} days ago"
         elsif hours_since >= 1

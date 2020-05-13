@@ -8,12 +8,13 @@
     top: 55px;
     left: 240px;
     height: 100%;
-    width: calc(100% - 240px);
+    padding-right: 10px;
     background: #f1f1f1;
 }
 
 .user-profile-header {
     flex-direction: column;
+    width: 100%;
     padding: 16px 107px 4px;
     background-color: #f9f9f9;
 }
@@ -70,12 +71,12 @@
 }
 
 .uploads-container .video-index-thumbnail {
-    height: 117px;
     width: 100%;
 }
 
 .profile-video-container {
     width: calc(100% / 5.1);
+    max-width: 210px;
     min-width: 205px;
     margin: 0 4px 24px 0;
 }

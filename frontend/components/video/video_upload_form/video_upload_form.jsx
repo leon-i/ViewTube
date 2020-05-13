@@ -83,7 +83,6 @@ class VideoUploadForm extends React.Component {
     handleUpload(e) {
         const file = e.target.files[0];
 
-
         if (file) {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
@@ -93,7 +92,7 @@ class VideoUploadForm extends React.Component {
                     title: file.name,
                     videoFile: file,
                     videoUrl: fileReader.result
-                })
+                });
             }
         } else {
             this.setState({ videoFile: null, videoUrl: '' })
@@ -118,7 +117,7 @@ class VideoUploadForm extends React.Component {
     render() {
         const { closeModal } = this.props;
         const { title, videoFile, videoUrl, thumbnailFile, thumbnailUrl, fileError } = this.state;
-        const currentStep = !videoFile ? (
+        const currentStep = !videoUrl ? (
             <Step1 closeModal={closeModal}
                 fileError={fileError}
                 findFileInput={this.findFileInput}

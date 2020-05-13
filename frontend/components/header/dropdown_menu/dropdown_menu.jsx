@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -49,8 +50,10 @@ class DropdownMenu extends React.Component {
                     </section>
                     <ul className='dropdown-links'>
                         <li>
-                            <FontAwesomeIcon icon={faUser} className='XS-icon'/>
-                            Your channel
+                            <Link to={`/users/${currentUser.id}`}>
+                                <FontAwesomeIcon icon={faUser} className='XS-icon'/>
+                                Your channel
+                            </Link>
                         </li>
                         <li onClick={logout}>
                             <FontAwesomeIcon icon={faSignOutAlt} className='XS-icon'/>

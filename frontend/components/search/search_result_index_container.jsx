@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { searchVideos } from '../../actions/video_actions';
 import SearchResultIndex from './search_result_index';
 
-const mapStateToProps = ({ session, entities: { users, videos } }) => ({
+const mapStateToProps = ({ session, entities: { users, videos }, ui: { sideNav } }) => ({
     currentUser: users[session.currentUserId],
-    videos
+    videos,
+    sideNav
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -2,10 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faPlay, faFilm, faThumbsUp, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
-const SideNavOpen = ({currentUser, login}) => {
+const SideNavOpen = ({ currentUser, login, history }) => {
     const middleUl = currentUser ? (
         <>
-            <li>
+            <li onClick={() => history.push(`/users/${currentUser.id}`)}>
                 <FontAwesomeIcon icon={faFilm} />
                 <p>Your Videos</p>
             </li>

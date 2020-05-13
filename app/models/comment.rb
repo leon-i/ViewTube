@@ -25,6 +25,7 @@ class Comment < ApplicationRecord
         time_difference = Time.now - Time.parse(self.created_at.to_s)
         years_since = (time_difference / 1.year).to_i
         months_since = (time_difference / 1.month).to_i
+        weeks_since = (time_difference / 1.week).to_i
         days_since = (time_difference / 1.day).to_i
         hours_since = (time_difference / 1.hour).to_i
         minutes_since = (time_difference / 1.minute).to_i
@@ -33,6 +34,8 @@ class Comment < ApplicationRecord
             years_since === 1 ? "1 year ago" : "#{years_since} years ago"
         elsif months_since >= 1
             months_since === 1 ? "1 month ago" : "#{months_since} months ago"
+        elsif weeks_since >= 1
+            weeks_since === 1 ? "1 week ago" : "#{weeks_since} weeks ago"
         elsif days_since >= 1
             days_since === 1 ? "1 day ago" : "#{days_since} days ago"
         elsif hours_since >= 1

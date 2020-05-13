@@ -1,5 +1,6 @@
 import { RECEIVE_VIDEOS, RECEIVE_VIDEO, REMOVE_VIDEO, CLEAR_VIDEOS } from '../actions/video_actions';
 import { RECEIVE_LIKE, REMOVE_LIKE } from '../actions/like_actions';
+import { RECEIVE_USER_PROFILE } from '../actions/user_actions';
 
 export default (state = {}, action) => {
     Object.freeze(state);
@@ -18,6 +19,10 @@ export default (state = {}, action) => {
             const parentVideo = Object.assign({}, state[action.like.likeable_id]);
             parentVideo.likes.push(action.like);
             return Object.assign({}, state, { [parentVideo.id]: parentVideo });
+        case RECEIVE_USER_PROFILE:
+            const userVideos = {};
+            action.user.videos.forEach(video => userVideos[video.id] = video);
+            return Object.assign({}, userVideos);
         default:
             return state;
     }

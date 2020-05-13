@@ -9,6 +9,8 @@ import LikeCounter from '../../likes/like_counter';
 class VideoShow extends React.Component {
     constructor(props) {
         super(props);
+
+        this.handleLike = this.handleLike.bind(this);
     }
 
     componentDidMount() {
@@ -16,10 +18,35 @@ class VideoShow extends React.Component {
         requestVideo(match.params.videoId);
     }
 
+    handleLike(type, existingLike) {
+        return (e) => {
+            const { currentUser, video, createVideoLike, deleteVideoLike } = this.props;
+            if (existingLike !== null) {
+                if (type === 'like') {
+                    createVideoLike({
+                        liker_id: currentUser.id,
+                        likeable_type: 'Video',
+                        likeable_id: video.id,
+                        dislike: false
+                    });
+                } else {
+                    createVideoLike({
+                        liker_id: currentUser.id,
+                        likeable_type: 'Video',
+                        likeable_id: video.id,
+                        dislike: true
+                    });
+                }  
+            } else {
+                deleteVideoLike(existingLike);
+            }
+           
+        }
+    }
+
     render() {
         const { video, currentUser, videoLikes, videoDislikes } = this.props;
         if (!video) return null;
-        debugger
         return (
             <div className='video-show flex'>
                 <section className='show-main'>
@@ -37,7 +64,8 @@ class VideoShow extends React.Component {
                             dislikes={videoDislikes}
                             currentUser={currentUser}
                             likeableType='Video'
-                            likeableId={video.id} />
+                            likeableId={video.id}
+                            handleLike={this.handleLike} />
                         </section>
                     </div>
                     <div className='show-details-bottom-container flex'>

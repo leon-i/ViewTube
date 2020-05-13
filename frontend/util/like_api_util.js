@@ -1,7 +1,7 @@
 export const createVideoLike = like => (
     $.ajax({
         method: 'POST',
-        url: 'api/videos/likes',
+        url: `api/videos/${like.likeable_id}/likes`,
         data: { like }
     })
 );
@@ -14,10 +14,10 @@ export const createCommentLike = like => (
     })
 );
 
-export const deleteVideoLike = likeId => (
+export const deleteVideoLike = like => (
     $.ajax({
         method: 'DELETE',
-        url: `api/videos/likes/${likeId}`,
+        url: `api/videos/${like.likeable_id}/${like.id}`,
     })
 )
 

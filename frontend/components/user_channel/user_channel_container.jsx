@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { clearVideos } from '../../actions/video_actions';
+import { closeModal } from '../../actions/modal_actions';
 import { requestUser } from '../../actions/user_actions';
 import UserChannel from './user_channel';
 
@@ -14,6 +15,7 @@ const mapStateToProps = ({ session, entities: { users, videos }, ui: { sideNav }
 
 const mapDispatchToProps = dispatch => ({
     clearVideos: () => dispatch(clearVideos()),
+    closeModal: () => dispatch(closeModal()),
     requestUser: userId => dispatch(requestUser(userId))
 });
 

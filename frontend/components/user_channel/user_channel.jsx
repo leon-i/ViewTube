@@ -10,7 +10,8 @@ class UserChannel extends React.Component {
         super(props);
     }
     componentDidMount() {
-        const { userProfileId, requestUser, clearVideos } = this.props
+        const { userProfileId, requestUser, clearVideos, closeModal } = this.props
+        closeModal();
         clearVideos();
         requestUser(userProfileId);
     }

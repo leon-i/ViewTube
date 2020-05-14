@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faPlay, faFilm, faThumbsUp, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
-const SideNavOpen = ({ currentUser, login, history }) => {
+const SideNavOpen = ({ currentUser, login, history, closeModal }) => {
     const middleUl = currentUser ? (
         <>
             <li onClick={() => history.push(`/users/${currentUser.id}`)}>
@@ -26,10 +27,12 @@ const SideNavOpen = ({ currentUser, login, history }) => {
     return (
         <div className='sidenav-open flex'>
             <ul className='sidenav-top'>
-                <li>
-                    <FontAwesomeIcon icon={faHome} />
-                    <p>Home</p>
-                </li>
+                <Link to='/' onClick={closeModal}>
+                    <li>
+                        <FontAwesomeIcon icon={faHome} />
+                        <p>Home</p>
+                    </li>
+                </Link>
                 <li>
                     <FontAwesomeIcon icon={faPlay} />
                     <p>Subscriptions</p>

@@ -13,6 +13,7 @@ class Header extends React.Component {
         }
         this._loginClick = this._loginClick.bind(this);
         this.handleEnter = this.handleEnter.bind(this);
+        this.handleSideNav = this.handleSideNav.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     }
@@ -24,6 +25,17 @@ class Header extends React.Component {
     handleEnter(e) {
         if (e.key === 'Enter') {
             this.handleSearchSubmit(e);
+        }
+    }
+
+    handleSideNav(e) {
+        const { sideNav, location, openModal, closeSideNav, openSideNav } = this.props;
+        if (location.pathname.includes('/videos')) {
+            openModal('sidenav');
+        } else if (sideNav) {
+            closeSideNav();
+        } else {
+            openSideNav();
         }
     }
 
@@ -44,12 +56,7 @@ class Header extends React.Component {
     }
 
     render() {
-        const { currentUser, sideNav, logout, openModal, openSideNav, closeSideNav, history } = this.props;
-        const sideNavButton = sideNav ? (
-            <button onClick={closeSideNav}><FontAwesomeIcon icon={faBars} className='bars large-icon' /></button>
-        ) : (
-            <button onClick={openSideNav}><FontAwesomeIcon icon={faBars} className='bars large-icon' /></button>
-        )
+        const { currentUser, logout, openModal, history } = this.props;
         const rightRender = currentUser ? (
                 <DropdownMenu currentUser={currentUser} logout={() => logout().then(history.push('/'))} />
         ) : (<div className='signin-btn flex' onClick={this._loginClick}>
@@ -60,7 +67,7 @@ class Header extends React.Component {
         return (
             <nav className='header-nav flex'>
                 <section className='left flex'>
-                    { sideNavButton }
+                    <button onClick={this.handleSideNav}><FontAwesomeIcon icon={faBars} className='bars large-icon' /></button>
                     <Link to='/'>
                         <img src={window.logo} className='logo' alt='ViewTube'/>
                     </Link>

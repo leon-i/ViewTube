@@ -102,3 +102,74 @@
     margin: 4px 0 10px 0;
     color: #606060;
 }
+
+.modal-child-2 {
+    position: absolute;
+    height: 100%;
+}
+
+.modal-sidenav {
+    flex-direction: column;
+    height: 100%;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+.modal-sidenav-open {
+    animation: openSideNav 0.25s;
+}
+
+.modal-sidenav-closed {
+    animation: closeSideNav 0.25s;
+}
+
+.modal-sidenav-header {
+    flex-direction: row;
+    background-color: #fff;
+    height: 54px;
+    width: 225px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 15px;
+}
+
+.modal-sidenav-header button {
+    height: 40px;
+    width: 40px;
+    padding: 8px;
+    margin: 6px 17px 0 0;
+    box-sizing: border-box;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.modal-sidenav-header svg {
+    height: 18px;
+    width: 20px;
+}
+
+.modal-sidenav-header img {
+    margin-top: 14px;
+}
+
+@keyframes openSideNav {
+    from {
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes closeSideNav {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-100%, 0, 0);
+    }
+}

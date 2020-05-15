@@ -51,8 +51,10 @@ class Header extends React.Component {
         const { searchQuery } = this.state;
         const searchUrl = searchQuery.split(' ').join('+');
 
-        clearVideos();
-        history.push(`/results?search_query=${searchUrl}`);
+        if (searchUrl.length) {
+            clearVideos();
+            history.push(`/results?search_query=${searchUrl}`);   
+        }
     }
 
     render() {

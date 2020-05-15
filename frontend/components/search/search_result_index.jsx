@@ -31,7 +31,8 @@ class SearchResultIndex extends React.Component {
     }
 
     render() {
-        const { sideNav, videos } = this.props;
+        const { sideNav, videos, location: { search } } = this.props;
+        const query = search.split('=')[1].split('+').join(' ');
         const results = Object.values(videos);
         const searchIndexClass = sideNav ? 'search-index pushed-right' : 'search-index pushed-left';
         const thumbnails = results.map((video, idx) => (
@@ -42,6 +43,9 @@ class SearchResultIndex extends React.Component {
             <>
             <SideNav />
             <div className={searchIndexClass}>
+                <header>
+                    <h1>{`Search results for "${query}"`}</h1>
+                </header>
                 { thumbnails }
             </div>
             </>

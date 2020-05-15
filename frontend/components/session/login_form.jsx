@@ -15,6 +15,10 @@ class LoginForm extends React.Component {
         this.nextStep = this.nextStep.bind(this);
     }
 
+    componentDidMount() {
+        this.props.closeModal();
+    }
+
     handleChange(field) {
         return (e) => {
             this.setState({ [field]: e.target.value })

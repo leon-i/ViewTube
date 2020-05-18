@@ -15,9 +15,7 @@ export default (state = {}, action) => {
         case CLEAR_VIDEOS:
             return {};
         case RECEIVE_USER_PROFILE:
-            const userVideos = {};
-            action.user.videos.forEach(video => userVideos[video.id] = video);
-            return Object.assign({}, userVideos);
+            return Object.assign({}, action.user.videos);
         default:
             return state;
     }

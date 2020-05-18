@@ -33,10 +33,12 @@ const SideNavOpen = ({ currentUser, login, history, closeModal }) => {
                         <p>Home</p>
                     </li>
                 </Link>
-                <li>
-                    <FontAwesomeIcon icon={faPlay} />
-                    <p>Subscriptions</p>
-                </li>
+                <Link to='/subscriptions' onClick={closeModal}>
+                    <li>
+                        <FontAwesomeIcon icon={faPlay} />
+                        <p>Subscriptions</p>
+                    </li>
+                </Link>
             </ul>
             <ul className='sidenav-middle flex'>
                 {middleUl}

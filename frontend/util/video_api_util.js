@@ -44,4 +44,12 @@ export const createView = view => (
         url: 'api/views',
         data: { view }
     })
-)
+);
+
+export const fetchSubscribedVideos = subscriber_id => (
+    $.ajax({
+        method: 'GET',
+        url: 'api/subscriptions',
+        data: { subscriber_id }
+    })
+);

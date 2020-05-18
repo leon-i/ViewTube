@@ -8,9 +8,11 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :create]
     end
     get :search, controller: :videos
+    get :subscriptions, controller: :videos
     resources :comments, only: [:update, :destroy]
     resources :likes, only: [:create, :destroy]
     resources :views, only: [:create]
+    resources :subscriptions, only: [:create, :destroy]
     resource :session, only: [:create, :destroy]
   end
 end

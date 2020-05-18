@@ -45,9 +45,18 @@ class Api::VideosController < ApplicationController
         render :index
     end
 
+    def subscriptions
+        subscriber_id = params[:subscriber_id]
+        user = User.find(subscriber_id)
+        @videos = user.subscribed_videos
+            .with_attached_thumbnail
+            .with_attached_video
+        render :index
+    end
+
     private
 
     def video_params
-        params.require(:video).permit(:uploader_id, :title, :description, :video, :thumbnail)
+        params.require(:video).permit(:uploader_id, :title, :description, :video, :thumbnail, :subscriber_id)
     end
 end

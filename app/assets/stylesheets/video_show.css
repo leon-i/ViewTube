@@ -195,3 +195,43 @@
 .side-username:hover, .side-index-item-content svg:hover {
     color: #030303;
 }
+
+.sign-in-menu {
+    position: fixed;
+    left: 68%;
+    top: 70%;
+    z-index: 40;
+    width: 378px;
+    height: 173.8px;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.97);
+    outline: none;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4) ;
+}
+
+.sign-in-menu h2 {
+    font-size: 18px;
+    line-height: 20px;
+    margin: 24px 0 16px 0;
+    padding: 0 24px;
+    color: #030303;
+}
+
+.sign-in-menu p {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 4px 0 32px;
+    padding: 0 24px;
+    color: #606060;
+}
+
+.link-container {
+    height: 40px;
+    padding: 22px 8px 8px 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sign-in-menu a {
+    font-weight: bold;
+    color: #065fd4;
+}

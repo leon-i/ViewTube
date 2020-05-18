@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import VideoSideIndexContainer from './video_side_index_container';
 import CommentIndexContainer from '../../comments/comment_index_container';
+import SubscribeButton from '../../subscriptions/subscribe_button';
 // import LikeCounter from '../../likes/like_counter';
 
 class VideoShow extends React.Component {
@@ -17,7 +18,7 @@ class VideoShow extends React.Component {
     }
 
     render() {
-        const { video, currentUser } = this.props;
+        const { video } = this.props;
         if (!video) return null;
         return (
             <div className='video-show flex'>
@@ -49,12 +50,12 @@ class VideoShow extends React.Component {
                                     <Link to={`/users/${video.uploader.id}`}>
                                         <h4>{video.uploader.username}</h4>
                                     </Link>
-                                    <p>Subscriber placeholder</p>
+                                    <p>{video.subscriberCount}</p>
                                 </div>
                             </div>
                             <span className='video-description'>{video.description}</span>
                         </div>
-                        <button className='subscribe-btn'>SUBSCRIBE</button>
+                        <SubscribeButton channelId={video.uploader.id} />
                     </div>
                     <CommentIndexContainer key={video.id} 
                     currentVideoId={this.props.match.params.videoId} />

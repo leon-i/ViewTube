@@ -19,6 +19,16 @@
     background-color: #f9f9f9;
 }
 
+.upper-profile-header {
+    flex-direction: row;
+    justify-content: space-between;
+    width: calc(100% - 200px);
+}
+
+.upper-profile-header-left {
+    flex-direction: row;
+}
+
 .user-profile-header svg {
     font-size: 80px;
     margin-right: 24px;

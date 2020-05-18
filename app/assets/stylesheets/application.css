@@ -242,6 +242,10 @@ body {
     z-index: 40;
 }
 
+.transparent {
+    background: transparent;
+}
+
 .modal-child {
     position: absolute;
     top: 50%;

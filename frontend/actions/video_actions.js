@@ -56,3 +56,6 @@ export const deleteVideo = videoId => dispatch =>
 
 export const searchVideos = query => dispatch =>
     SearchAPIUtil.fetchSearchResults(query).then(videos => dispatch(receiveVideos(videos)));
+
+export const requestSubscribedVideos = subscriberId => dispatch =>
+    VideoAPIUtil.fetchSubscribedVideos(subscriberId).then(videos => dispatch(receiveVideos(videos)));

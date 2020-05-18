@@ -35,6 +35,26 @@ class User < ApplicationRecord
     has_many :viewed_videos,
         through: :video_views,
         source: :video
+    
+    has_many :subscriptions,
+        foreign_key: :subscriber_id,
+        class_name: :Subscription
+    
+    has_many :subscribers,
+        foreign_key: :channel_id,
+        class_name: :Subscription
+    
+    has_many :subscriptions_to_channels,
+        through: :subscriptions,
+        source: :channel
+    
+    has_many :subscribed_users,
+        through: :subscribers,
+        source: :subscriber
+    
+    has_many :subscribed_videos,
+        through: :subscriptions_to_channels,
+        source: :videos
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
@@ -61,5 +81,51 @@ class User < ApplicationRecord
 
     def ensure_session_token
         self.session_token ||= self.class.generate_session_token
+    end
+
+    def format_subscriber_count
+        subscribers = self.subscribers.length
+        return '0 subscribers' if subscribers === 0
+        
+        digit_arr = subscribers.to_s.split('')
+        displayed_digits = handle_first_three_digits(digit_arr[0..2])
+
+        if subscribers >= 10000000
+            displayed_digits = displayed_digits[2].to_i === 0 ? displayed_digits[0..1] : "#{displayed_digits[0..1]}.#{displayed_digits[2]}"
+            "#{displayed_digits}M subscribers"
+        elsif subscribers >= 1000000
+            displayed_digits = displayed_digits[1].to_i === 0 ? displayed_digits[0] : "#{displayed_digits[0]}.#{displayed_digits[1]}"
+            "#{displayed_digits}M subscribers"
+        elsif subscribers >= 100000
+            "#{displayed_digits}K subscribers"
+        elsif subscribers >= 10000
+            displayed_digits = displayed_digits[2].to_i === 0 ? displayed_digits[0..1] : "#{displayed_digits[0..1]}.#{displayed_digits[2]}"
+            "#{displayed_digits}K subscribers"
+        elsif subscribers >= 1000
+            displayed_digits = displayed_digits[1].to_i === 0 ? displayed_digits[0] : "#{displayed_digits[0]}.#{displayed_digits[1]}"
+            "#{displayed_digits}K subscribers"
+        elsif subscribers > 1
+            "#{subscribers} subscribers"
+        elsif subscribers === 1
+            '1 subscriber'
+        else
+            "#{displayed_digits} subscribers"
+        end
+    end
+
+    def handle_first_three_digits(digit_arr)
+        approved_numbers = []
+        non_zero_found = false
+
+        digit_arr.each do |num|
+            if num.to_i != 0
+                non_zero_found = true
+                approved_numbers << num
+            elsif non_zero_found
+                approved_numbers << num
+            end
+        end
+
+        approved_numbers.join('')
     end
 end

@@ -4,6 +4,7 @@ import { createView } from '../../util/video_api_util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import SideNav from '../sidenav/sidenav';
+import SubscribeButton from '../subscriptions/subscribe_button';
 
 class UserChannel extends React.Component {
     constructor(props) {
@@ -50,10 +51,15 @@ class UserChannel extends React.Component {
                 <section className={profileSectionClass}>
                     <header className='user-profile-header flex'>
                         <section className='upper-profile-header flex'>
-                            <FontAwesomeIcon icon={faUserCircle} />
-                            <div className='user-profile-details'>
-                                <h1>{userProfile.username}</h1>
-                                <p>22 subscribers</p>
+                            <div className='upper-profile-header-left flex'>
+                                <FontAwesomeIcon icon={faUserCircle} />
+                                <div className='user-profile-details'>
+                                    <h1>{userProfile.username}</h1>
+                                    <p>{userProfile.subscriberCount}</p>
+                                </div>
+                            </div>
+                            <div className='upper-profile-header-right flex'>
+                                <SubscribeButton channelId={userProfile.id} />
                             </div>
                         </section>
                         <nav className='profile-nav'>

@@ -35,6 +35,11 @@
     border-bottom: none;
 }
 
+.subscribed-video-section-index {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .subscribed-profile-detail-text {
     flex-direction: column;
     align-items: flex-start;

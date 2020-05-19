@@ -2,13 +2,13 @@
     flex-direction: column;
     position: absolute;
     height: 100%;
-    padding: 24px 100px 0 100px;
+    padding: 24px 50px 0 50px;
 }
 
 .subscribed-partial-width {
     top: 55px;
     left: 240px;
-    width: calc(100% - 440px);
+    width: calc(100% - 340px);
 }
 
 .subscribed-full-width {
@@ -38,6 +38,12 @@
 .subscribed-video-section-index {
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.subscribed-profile-video-container {
+    flex: 1 1 19.5%;
+    min-width: 200px;
+    margin: 0 4px 24px 0;
 }
 
 .subscribed-profile-detail-text {

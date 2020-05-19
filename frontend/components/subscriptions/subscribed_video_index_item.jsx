@@ -12,7 +12,7 @@ const creatVideoView = (videoId, viewerId) => {
 }
 
 const SubscribedVideoIndexItem = ({video, currentUserId}) => (
-    <div className='profile-video-container' onClick={creatVideoView(video.id, currentUserId)}>
+    <div className='subscribed-profile-video-container' onClick={creatVideoView(video.id, currentUserId)}>
         <Link to={`/videos/${video.id}`}>
             <div className='video-index-thumbnail'>
                 <img src={video.thumbnailUrl} alt="video-thumbnail" />

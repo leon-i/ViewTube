@@ -14,10 +14,12 @@ const SideNavClosed = () => {
                         <p>Home</p>
                     </li>
                 </Link>
-                <li>
-                    <FontAwesomeIcon icon={faPlay} />
-                    <p>Subscriptions</p>
-                </li>
+                <Link to='/subscriptions'>
+                    <li>
+                        <FontAwesomeIcon icon={faPlay} />
+                        <p>Subscriptions</p>
+                    </li>
+                </Link>
                 <a href='https://www.github.com/leon-i/ViewTube' target='_blank'>
                     <li>
                         <FontAwesomeIcon icon={faGithub} className='XS-icon' />

@@ -30,7 +30,7 @@
     color: #606060;
 }
 
-.sidenav-open li:hover > svg, .sidenav-open li:active > svg, 
+.sidenav-open li:hover > .icon-container svg, .sidenav-open li:active > .icon-container svg, 
 .sidenav-links li:hover > svg, .sidenav-links li:active > svg {
     color: #f00;
 }

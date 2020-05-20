@@ -39,7 +39,7 @@
     margin: 2px 0 0 24px;
 }
 
-.sidenav-top, .sidenav-middle {
+.sidenav-top, .sidenav-middle, .sidenav-bottom {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 12px 0;
 }
@@ -50,6 +50,13 @@
     align-items: center;
 }
 
+.icon-container {
+    flex-direction: row;
+    justify-content: center;
+    height: 16px;
+    width: 18px;
+}
+
 .signin-section {
     flex-direction: column;
     align-items: flex-start;
@@ -58,7 +65,7 @@
 
 .signin-section h4 {
     color: #030303;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.2rem;
     margin-bottom: 12px;
 }

@@ -49,12 +49,12 @@ class DropdownMenu extends React.Component {
                         </div>
                     </section>
                     <ul className='dropdown-links'>
-                        <li>
-                            <Link to={`/users/${currentUser.id}`}>
+                        <Link to={`/users/${currentUser.id}`}>
+                            <li>
                                 <FontAwesomeIcon icon={faUser} className='XS-icon'/>
                                 Your channel
-                            </Link>
-                        </li>
+                            </li>
+                        </Link>
                         <li onClick={logout}>
                             <FontAwesomeIcon icon={faSignOutAlt} className='XS-icon'/>
                             Sign out

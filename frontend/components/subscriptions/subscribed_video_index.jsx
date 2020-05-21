@@ -27,7 +27,7 @@ class SubscribedVideoIndex extends React.Component {
                 <div className={`subscribed-video-index-container flex ${videoIndexWidth}`}>
                     <section className='subscribed-sign-in-message flex'>
                         <h1>Don’t miss new videos</h1>
-                        <h2>Sign in to see updates from your favorite YouTube channels</h2>
+                        <h2>Sign in to see updates from your favorite ViewTube channels</h2>
                         <Link to='/login'>
                             <div className='signin-btn flex'>
                                 <FontAwesomeIcon icon={faUserCircle} className='small-icon' />
@@ -45,7 +45,7 @@ class SubscribedVideoIndex extends React.Component {
                 <div className={`subscribed-video-index-container flex ${videoIndexWidth}`}>
                     <div className='no-subscriptions-message flex'>
                         <h1>You have not subscribed to any channels</h1>
-                        <h2>Subscribe to see updates from your favorite YouTube channels</h2>
+                        <h2>Subscribe to see updates from your favorite ViewTube channels</h2>
                         <Link to='/'>
                             <button>HOME</button>
                         </Link>

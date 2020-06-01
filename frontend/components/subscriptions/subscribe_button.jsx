@@ -26,10 +26,9 @@ const SubscribeButton = ({ currentUser, subscriptions, channelId, createSubscrip
 }
 
 const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
-    debugger
     const currentUser = users[session.currentUserId];
-    let subscriptions;
-    if (currentUser) subscriptions = currentUser.subscriptions;
+    const subscriptions = currentUser ? currentUser.subscriptions : null;
+    
     return {
         channelId: ownProps.channelId,
         currentUser,

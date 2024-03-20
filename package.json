@@ -30,14 +30,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --mode=development --watch",
-    "postinstall": "webpack"
+    "postinstall": "env NODE_OPTIONS=--openssl-legacy-provider webpack"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/leon-i/ViewTube.git"
   },
   "engines": {
-    "node": "16.0.0"
+    "node": "16.x"
   },
   "keywords": [],
   "author": "",

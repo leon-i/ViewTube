@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: Viewtube_production
-  username: Viewtube
-  password: <%= ENV['VIEWTUBE_DATABASE_PASSWORD'] %>
+  database: railway
+  username: postgres
+  url: <%= ENV['DATABASE_URL'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
